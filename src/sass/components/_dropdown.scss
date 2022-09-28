@@ -1,0 +1,64 @@
+.dropdown-container {
+    position: absolute;
+    z-index: 10;
+    background-color: var(--component-bg);
+    top: 45px;
+    right: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    .user-drop {
+        padding: 10px 20px;
+        display: flex;
+        border-bottom: 1px solid var(--comp-hover);
+
+        .image {
+            margin-right: 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .username {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    ul {
+        li {
+            a, span {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                padding: 5px 10px;
+                color: var(--com-color);
+                cursor: pointer;
+
+                svg {
+                    font-size: 18px;
+                }
+
+                &:hover {
+                    background-color: var(--comp-hover);
+                }
+            }
+        }
+    }
+}
+
+
+.push-container {
+    position: absolute;
+    z-index: 10;
+    border-radius: 5px;
+    min-width: 420px;
+    height: 240px;
+    top: 45px;
+    right: 10px;
+    background-color: var(--background);
+    box-shadow: 0 0 10px var(--border);
+    color: var(--color);
+
+}

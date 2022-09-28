@@ -1,0 +1,13 @@
+.testflow-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .testflow {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        overflow: auto;
+    }
+}

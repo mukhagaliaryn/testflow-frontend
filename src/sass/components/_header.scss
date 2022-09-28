@@ -1,0 +1,93 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--component-bg);
+    color: var(--comp-color);
+    
+    .intro-header {
+        height: 48px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+
+        .search {
+            .input-group {
+                position: relative;
+
+                svg {
+                    position: absolute;
+                    color: var(--comp-color);
+                    top: 10px;
+                    left: 10px;
+                }
+
+                input {
+                    padding: 10px 20px 10px 40px;
+                    background-color: var(--comp-input);
+                    border: none;
+                    color: var(--comp-color);
+                    font-family: "Inter", sans-serif;
+                    border-radius: 5px;
+                    border: 1px solid var(--comp-input);
+
+                    &:focus {
+                        border: 1px solid var(--blue);
+                    }
+
+                }
+            }
+            
+        }
+
+        .accounts {
+            display: flex;
+            height: 100%;
+            color: var(--comp-color);
+
+            .push {
+                height: 100%;
+                padding: 0 20px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--comp-hover);
+                }
+            }
+
+            .user {
+                display: flex;
+                height: 100%;
+                align-items: center;
+                padding: 0 10px;
+                cursor: pointer;
+
+                .ava {
+                    width: 32px;
+                    height: 32px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    margin-right: 10px;
+                }
+
+                .down {
+                    font-size: 12px;
+                    transition: all .3s;
+                }
+
+                &:hover {
+                    background-color: var(--comp-hover);
+
+                    .down {
+                        transform: translateY(5px);
+                    }
+                }
+            }
+
+            // ====================================
+        }
+    }
+}

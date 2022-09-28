@@ -1,0 +1,35 @@
+.alert-container {
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+    width: 100%;
+    
+    .alert {
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(37, 37, 37);
+        
+        svg {
+            font-size: 24px;
+            margin: 0 5px;
+        }
+
+        .success {
+            color: rgb(23, 189, 87);
+        }
+        .error {
+            color: rgb(189, 22, 56);
+        }
+    
+        small {
+            display: inline-block;
+            margin: 0 5px;
+            color: white;
+            font-weight: normal;
+            font-size: 16px;
+            font-family: "Inter", sans-serif;
+        }
+    }
+}

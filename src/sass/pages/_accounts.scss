@@ -1,0 +1,264 @@
+.accounts-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+
+    // =========================================================
+    .features {
+        background-color: var(--component-bg);
+        color: var(--comp-color);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0 40px;
+
+        .intro-features {
+
+            .logo {
+                padding-bottom: 40px;
+                
+                a {
+                    font-family: "Poppins", sans-serif;
+                    color: var(--comp-color);
+                    display: inline-flex;
+                    
+                    .image {
+                        width: 64px;
+                    }
+                    
+                    span {
+                        margin-left: 20px;
+                        font-size: 2.5rem;
+                        font-weight: 700;
+                    }
+                }
+            }
+        
+            ul {
+                list-style: none;
+                
+                li {
+                    display: flex;
+                    margin-bottom: 20px;
+
+                    svg {
+                        margin-top: 5px;
+                        min-width: 20px;
+                        font-size: 20px;
+                        color: var(--button-bg);
+                    }
+
+                    .title {
+                        margin-left: 10px;
+                        max-width: 360px;
+
+                        h3 {
+                            padding-bottom: 5px;
+                        }
+
+                        p {
+                            font-size: 14px;
+                            color: var(--comp-text-color);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    // =========================================================
+    .accounts-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px 40px;
+
+
+        .intro-accounts-container {
+            width: 420px;    
+            
+            h1 {
+                padding-bottom: 20px;
+                text-align: center;
+                font-size: 1.5rem;
+            }
+
+            form {
+                .input-group {
+                    display: flex;
+                    flex-direction: column;
+                    padding-bottom: 20px;
+
+                    label {
+                        font-weight: bold;
+                        padding-bottom: 5px;
+                        font-size: 14px;
+                    }
+
+                    .input {
+                        position: relative;
+
+                        svg {
+                            bottom: 12px;
+                            left: 10px;
+                            font-size: 20px;
+                            position: absolute;
+                        }
+
+                        input, button {
+                            width: 100%;
+                            padding: 10px 20px 10px 40px;
+                            border-radius: 5px;
+                            font-size: 16px;
+                            font-family: "Inter", sans-serif;
+                            border: 1px solid var(--border);
+    
+                            &:focus {
+                                border: 1px solid var(--blue);
+                            }
+                        }
+                    }
+
+                    p {
+                        font-size: 14px;
+                        color: red;
+                        margin: 5px;
+                    }
+                }
+
+                .submit {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    a {
+                        margin-right: 10px;
+                    }
+
+                    .input {
+
+                        button {
+                            width: auto;
+                            position: relative;
+                            cursor: pointer;
+                            border: 1px solid var(--blue);
+                            background-color: var(--button-bg);
+                            color: var(--input-text-color);
+                            transition: all .3s;
+                            font-weight: bold;
+    
+                            svg {
+                                bottom: 10px;
+                                left: 10px;
+                            }
+    
+                            &:hover {
+                                background-color: transparent;
+                                color: var(--blue);
+                            }
+                        }
+
+                        span {
+                            font-size: 14px;
+                            color: var(--color);
+                        }
+                    }
+
+                    .full {
+                        width: 100%;
+
+                        button {
+                            width: 100%;
+                        }
+                    }
+
+                    a {
+                        font-size: 14px;
+                        color: var(--blue);
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            .more-link {
+                margin-top: 40px;
+                display: flex;
+                flex-direction: column;
+
+                span {
+                    font-size: 14px;
+                }
+
+                a {
+                    padding: 10px 20px;
+                    border: 1px solid var(--blue);
+                    background-color: var(--button-bg);
+                    color: white;
+                    border-radius: 5px;
+                    margin-top: 10px;
+                    text-align: center;
+                    transition: all .3s;
+
+                    &:hover {
+                        background-color: transparent;
+                        color: var(--blue);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// ==============================================================
+@media screen and (max-width: 940px) {
+    .accounts-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+
+        .features {
+            display: none;
+        }
+
+        .accounts-container {
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+    }
+    
+}
+
+
+@media screen and (max-width: 480px) {
+    .accounts-wrapper {
+
+        .accounts-container {
+
+            .intro-accounts-container {
+                width: 100%;
+
+                form {
+                    .submit {
+                        flex-direction: column;
+
+                        a {
+                            margin-bottom: 10px;
+                        }
+
+                        .input {
+                            width: 100%;
+
+                            button {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
