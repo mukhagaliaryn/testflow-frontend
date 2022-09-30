@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { BACKEND_URL } from "../actions/types";
 import MainLayout from "../layouts/main";
 import { AiFillCaretRight, AiOutlineCheckCircle, AiOutlineFieldTime } from "react-icons/ai";
-
+import { RiErrorWarningLine } from 'react-icons/ri';
 
 
 const Home = ({user_test_data}) => {
@@ -36,7 +36,7 @@ const Home = ({user_test_data}) => {
                         </div>
                         
                         {/* Reseults */}
-                        {user_test_data.length > 0 && user_test_data.map((data, i) => {
+                        {user_test_data.length > 0 ? user_test_data.map((data, i) => {
                             const datetime = new Date(data.start_time);
                             return (
                                 <div className="results" key={i}>
@@ -78,7 +78,19 @@ const Home = ({user_test_data}) => {
 
                                 </div>
                             )
-                        })}
+                        })
+                    :
+                        <div className="no-content">
+                            <RiErrorWarningLine />
+                            <span>
+                                Әзірше бірде-бір тест тапсыру сессиясы ашылмаған.
+                                Алғашқы тест тапсырып, өз біліміңді тексеріп көр!
+                            </span>
+                            <Link href={"/tests"}>
+                                <a>Алғашқы тест сессиясын ашу</a>
+                            </Link>                            
+                        </div>
+                    }
                     </div>
                 </div>
             }

@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { GrFlows, GrHomeRounded } from 'react-icons/gr';
+import { GrUpgrade } from 'react-icons/gr';
 import { TbLayoutList } from 'react-icons/tb';
-import { RiHome5Line } from 'react-icons/ri';
+import { RiErrorWarningLine, RiHome5Line } from 'react-icons/ri';
 import { useSelector } from "react-redux";
 
 
@@ -38,6 +38,17 @@ const Navbar = () => {
                     </Link>
                 </li>
             </ul>
+
+            <div className="upgrade-plan">
+            <GrUpgrade />
+                <span>
+                    Тегін тарифтегі мүмкіндіктер бітті ме? <br />
+                    Premium тарифіндегі жаңа мүмкіндіктермен өзіңді дамыт!
+                </span>
+                <Link href={"/plans"}>
+                    <a>Тарифтер</a>
+                </Link>  
+            </div>
         </div>
     )
 }

@@ -28,7 +28,7 @@ const AccountsLayout = (props) => {
                 <title>{props.title}</title>
                 <meta content={props.content} />
             </Head>
-            <div id="root">
+            <div id="root" style={{ overflow: "auto" }}>
                 <div className="accounts-wrapper">
                     <div className="features">
                         <div className="intro-features">
