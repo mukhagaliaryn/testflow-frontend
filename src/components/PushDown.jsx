@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { IoIosClose } from 'react-icons/io';
 
 
-const PushDown = () => {
+const PushDown = ({ togglePushDropdown }) => {
     return (
         <motion.div 
         initial={{ y: 0, opacity: 0 }}
@@ -11,8 +12,9 @@ const PushDown = () => {
         transition={{ duration: 0.3 }}
         className="push-container"
         >
-            <div className="heading">
-                <h4>Push-уведомления</h4>
+            <div className="push-heading">
+                <span>Push-уведомления</span>
+                <span className="close" onClick={togglePushDropdown}><IoIosClose/></span>
             </div>
         </motion.div>
     )

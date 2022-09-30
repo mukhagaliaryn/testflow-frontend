@@ -18,6 +18,7 @@ const Header = () => {
 
 
     const toggleDropdown = () => setDropdown(!dropdown);
+
     const togglePushDropdown = () => setPush(!push);
 
     const logoutHandler = () => {
@@ -51,7 +52,7 @@ const Header = () => {
                     </AnimatePresence>
                     <AnimatePresence>
                         {push &&
-                            <PushDown />
+                            <PushDown togglePushDropdown={togglePushDropdown} />
                         }
                     </AnimatePresence>
                 </div>

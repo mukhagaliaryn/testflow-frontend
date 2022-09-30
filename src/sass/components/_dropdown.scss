@@ -61,4 +61,26 @@
     box-shadow: 0 0 10px var(--border);
     color: var(--color);
 
+    .push-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 10px;
+        border-bottom: 1px solid var(--comp-border);
+
+        .close {
+            cursor: pointer;
+            border-radius: 10px;
+
+            svg {
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            &:hover {
+                background-color: var(--hover);
+            }
+        }
+
+    }
 }
