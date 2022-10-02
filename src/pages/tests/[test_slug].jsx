@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import { BACKEND_URL } from "../actions/types";
-import { SUBJECTS } from '../actions/subjects';
-import MainLayout from "../layouts/main";
+import { BACKEND_URL } from "../../actions/types";
+import { SUBJECTS } from '../../actions/subjects';
+import MainLayout from "../../layouts/main";
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import parse from 'html-react-parser';
@@ -109,12 +109,13 @@ export async function getServerSideProps(context) {
         }
     }
     const res = await fetch(`${BACKEND_URL}/test-category/${context.params.test_slug}/`, context.req.cookies.access && config)
+    
     const test_category = await res.json();
 
     return {
         props: {
             test_category,
-            access: context.req.cookies.access
+            access: context.req.cookies.access || null
         }
     }
 }

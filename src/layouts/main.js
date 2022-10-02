@@ -30,7 +30,7 @@ const MainLayout = (props) => {
             </Head>
             <Script id="storage">
                 {`
-                    localStorage.setItem('currentPage', "${router.asPath}");
+                    localStorage.setItem("currentPage", "${router.asPath}");
                 `}
             </Script>
             <div id="root" >

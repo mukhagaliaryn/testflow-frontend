@@ -108,7 +108,6 @@ export async function getServerSideProps(context) {
     }
     const res = await fetch(`${BACKEND_URL}/`, context.req.cookies.access && config)
     const user_test_data = await res.json();
-    // const user_test_data = data.user_test_data;
 
     return {
         props: {

@@ -53,8 +53,8 @@ const TestLayout = (props) => {
 }
 
 TestLayout.defaultProps = {
-    title: "UStudy",
-    content: "UStudy - платформа для онлайн тестирования"
+    title: "Testflow",
+    content: "Testflow - онлайн платформа для тестового потока"
 }
 
 export default TestLayout;

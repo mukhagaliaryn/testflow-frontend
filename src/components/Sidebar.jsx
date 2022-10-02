@@ -7,10 +7,10 @@ const Sidebar = ({ reverse_quizzes, quizzes }) => {
     return (
         <div className="sidebar">
             <ul className="reverse-quizzes">
-                {reverse_quizzes.map((item, i) => {
+                {reverse_quizzes.length > 0 && reverse_quizzes.map((item, i) => {
                     return (
                         <li key={i}>
-                            <Link href="">
+                            <Link href={`/`}>
                                 <a>{item.title}</a>
                             </Link>
                         </li>
@@ -18,10 +18,10 @@ const Sidebar = ({ reverse_quizzes, quizzes }) => {
                 })}
             </ul>
             <ul className="quizzes">
-                {quizzes.map((item, i) => {
+                {quizzes.length > 0 && quizzes.map((item, i) => {
                     return (
                         <li key={i}>
-                            <Link href="">
+                            <Link href={`/`}>
                                 <a>{item.title}</a>
                             </Link>
                         </li>
