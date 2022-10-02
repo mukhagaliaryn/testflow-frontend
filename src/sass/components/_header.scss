@@ -91,3 +91,37 @@
         }
     }
 }
+
+
+
+// Test header
+// ======================================================
+.test-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--component-bg);
+    color: var(--comp-color);
+
+    .intro-test-header {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        overflow-x: auto;
+        
+
+        .index {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: var(--blue);
+            margin: 0 5px;
+            transition: all .3s;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@ import { BACKEND_URL } from "../../../actions/types";
 import TestLayout from "../../../layouts/test";
 
 
-const TestFlowQuizDetail = ({ user_test_data, reverse_quizzes }) => {
+const TestFlowQuizDetail = ({ user_test_data, reverse_quizzes, quiz }) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
@@ -13,15 +13,35 @@ const TestFlowQuizDetail = ({ user_test_data, reverse_quizzes }) => {
     if(typeof window !== 'undefined' && !isAuthenticated) {
         router.push('/accounts/login')
     }
-    
+
     return (
         <TestLayout
-            quizzes={user_test_data.quizzes || []}
+            user_test_data={user_test_data}
             reverse_quizzes={reverse_quizzes}
+            questions={quiz.get_questions}
         >
             {isAuthenticated &&
                 <div className="subject-testflow">
-                    <h1>Hello world</h1>
+                    {quiz.get_questions.map((item, i) => {
+                        return (
+                            <div key={i} className="question-box">
+                                <div className="question-title">
+                                    <p>{item.content}</p>
+                                </div>
+                                <ol className="answers">
+                                    {item.get_answers.map((answer, i) => {
+                                        return (
+                                            <li className="answer" key={i}>
+                                                <input type="radio" name={item.id} />
+                                                <span>{answer.content}</span>
+                                            </li>
+                                        )
+                                    })}
+                                </ol>
+                            </div>
+                        )
+                    })}
+
                 </div>
             }
         </TestLayout>

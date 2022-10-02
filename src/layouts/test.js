@@ -33,12 +33,14 @@ const TestLayout = (props) => {
             </Script>
             <div id="root">
                 <div className="testflow-wrapper">
-                    <TestHeader />
+                    <TestHeader
+                        questions={props.questions || []}
+                    />
 
                     <div className="testflow">
                         <Sidebar 
                             reverse_quizzes={props.reverse_quizzes} 
-                            quizzes={props.quizzes}
+                            user_test_data={props.user_test_data}
                         />
                         
                         {/* =============================== */}

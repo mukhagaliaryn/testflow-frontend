@@ -7,7 +7,38 @@
     .testflow {
         flex: 1;
         display: grid;
-        grid-template-columns: 200px 1fr;
-        overflow: auto;
+        grid-template-columns: 260px 1fr;
+        height: 100%;
+
+        .tesflow-data {
+            overflow: auto;
+
+
+            .subject-testflow {
+
+                .question-box {
+                    border-bottom: 1px solid var(--comp-border);
+                    
+                    .question-title {
+                        padding: 20px;
+                        border-bottom: 1px solid var(--comp-border);
+                    }
+
+                    .answers {
+                        margin-left: 40px;
+
+                        .answer {
+                            padding: 10px;
+                            list-style: upper-alpha;
+                            
+                            input {
+                                display: inline-block;
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

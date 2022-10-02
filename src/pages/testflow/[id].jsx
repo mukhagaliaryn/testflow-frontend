@@ -15,16 +15,18 @@ const TestFlow = ({ user_test_data, reverse_quizzes }) => {
         router.push('/accounts/login')
     }
 
+    const quiz = reverse_quizzes[0];
 
     return (
         <TestLayout
-            quizzes={user_test_data.quizzes || []}
+            user_test_data={user_test_data}
             reverse_quizzes={reverse_quizzes}
         >
             {isAuthenticated &&
                 <div className="testflow-container">
-                    <Link href="/testflow/6/asd">
-                        <a>asd</a>
+                    <h1>{quiz.title}</h1>
+                    <Link href={`/testflow/${user_test_data.id}/${quiz.slug}`}>
+                        <a>Тестілеуді бастау</a>
                     </Link>
                 </div>
             }
