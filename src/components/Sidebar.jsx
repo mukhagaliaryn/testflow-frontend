@@ -7,6 +7,8 @@ const Sidebar = ({ reverse_quizzes, user_test_data }) => {
     const router = useRouter();
     const quizzes = user_test_data.quizzes || [];
 
+    console.log(router.asPath);
+
     return (
         <div className="sidebar">
             <ul className="reverse-quizzes">

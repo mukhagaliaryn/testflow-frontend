@@ -49,6 +49,11 @@ const TestDetail = ({test_category, access}) => {
         router.push('/accounts/login')
     }
 
+    if(typeof window !== 'undefined' && !test_category.test_name) {
+        router.push("/tests")
+    }
+
+
     return (
         <MainLayout
             title={test_category.test_name}
@@ -62,7 +67,7 @@ const TestDetail = ({test_category, access}) => {
                             <h1>{test_category.test_name}</h1>
                         </div>
                         <div className="description">
-                            {parse(test_category.description)}
+                            {parse(test_category.description || "")}
                         </div>
 
                         <form onSubmit={handleSubmit(onSubmit)}>

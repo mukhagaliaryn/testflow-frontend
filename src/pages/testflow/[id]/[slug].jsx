@@ -14,6 +14,10 @@ const TestFlowQuizDetail = ({ user_test_data, reverse_quizzes, quiz }) => {
         router.push('/accounts/login')
     }
 
+    console.log(user_test_data);
+    console.log(reverse_quizzes);
+    console.log(quiz);
+
     return (
         <TestLayout
             user_test_data={user_test_data}
