@@ -3,9 +3,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { BACKEND_URL } from "../../../actions/types";
 import TestLayout from "../../../layouts/test";
+import parse from 'html-react-parser';
 
 
-const TestFlowQuizDetail = ({ user_test_data, reverse_quizzes, quiz }) => {
+const TestFlowQuizDetail = ({ user_test_data, quiz, questions }) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
@@ -14,30 +15,29 @@ const TestFlowQuizDetail = ({ user_test_data, reverse_quizzes, quiz }) => {
         router.push('/accounts/login')
     }
 
-    console.log(user_test_data);
-    console.log(reverse_quizzes);
-    console.log(quiz);
-
     return (
         <TestLayout
             user_test_data={user_test_data}
-            reverse_quizzes={reverse_quizzes}
-            questions={quiz.get_questions}
+            questions={questions}
+            title={quiz.title}
         >
             {isAuthenticated &&
                 <div className="subject-testflow">
-                    {quiz.get_questions.map((item, i) => {
+                    {questions.map((item, i) => {
                         return (
                             <div key={i} className="question-box">
                                 <div className="question-title">
-                                    <p>{item.content}</p>
+                                    <div className="q-head">
+                                        <span id="number">{i+1}.</span>
+                                        <span>{parse(item.content)}</span>
+                                    </div>
                                 </div>
                                 <ol className="answers">
                                     {item.get_answers.map((answer, i) => {
                                         return (
                                             <li className="answer" key={i}>
                                                 <input type="radio" name={item.id} />
-                                                <span>{answer.content}</span>
+                                                <span>{parse(answer.content)}</span>
                                             </li>
                                         )
                                     })}
@@ -45,12 +45,12 @@ const TestFlowQuizDetail = ({ user_test_data, reverse_quizzes, quiz }) => {
                             </div>
                         )
                     })}
-
                 </div>
             }
         </TestLayout>
     )
 }
+
 
 export async function getServerSideProps(context) {
     const config = {
@@ -63,14 +63,14 @@ export async function getServerSideProps(context) {
     const data = await res.json();
 
     const user_test_data = data.user_test_data || [];
-    const reverse_quizzes = data.reverse_quizzes || [];
     const quiz = data.quiz || {};
+    const questions = data.questions || [];
 
     return {
         props: {
             user_test_data,
-            reverse_quizzes,
-            quiz
+            quiz,
+            questions
         }
     }
 }

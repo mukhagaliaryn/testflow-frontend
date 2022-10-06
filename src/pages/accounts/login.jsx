@@ -62,10 +62,15 @@ const Login = () => {
                         <a>{t("accounts.forgot_password")}</a>
                     </Link>
                     <div className="input">
-                        {loading ? 
-                            <span>{t("accounts.loading")}</span> 
-                        : 
-                            <button><FaUnlock/>{t("accounts.enter")}</button>}
+                        <button>
+                            {loading 
+                            ? 
+                                <span>{t("accounts.loading")}</span> 
+                            : 
+                            <>
+                                <FaUnlock/> {t("accounts.enter")}
+                            </>}
+                        </button>
                     </div>
                 </div>
             </form>

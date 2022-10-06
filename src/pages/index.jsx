@@ -41,18 +41,18 @@ const Home = ({user_test_data}) => {
                             return (
                                 <div className="results" key={i}>
                                     <span id="id">{data.id}</span>
-                                    <span id="test">{data.test_category.test_name}</span>
+                                    <span id="test">{data.test_type}</span>
                                     <span id="ls">
                                         {data.quizzes.map((quiz, i) => {
                                             return (
                                                 <div 
                                                     style={{display: "inline-block", marginRight: "5px"}} key={i}>
-                                                        {quiz.title}
+                                                        {!quiz.is_reserve_and_required && quiz.title}
                                                 </div>
                                             )
                                         })}
                                     </span>
-                                    <span id="ln">{data.test_category.ln}</span>
+                                    <span id="ln">{data.ln === 'KZ' ? "Қазақша" : "Русский"}</span>
                                     <span id="time">
                                         {datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds()}
                                         -
@@ -106,7 +106,7 @@ export async function getServerSideProps(context) {
             "Authorization": `JWT ${context.req.cookies.access}`
         }
     }
-    const res = await fetch(`${BACKEND_URL}/`, context.req.cookies.access && config)
+    const res = await fetch(`${BACKEND_URL}/testflow/`, context.req.cookies.access && config)
     const user_test_data = await res.json();
 
     return {

@@ -41,7 +41,7 @@ const Header = () => {
 
                     <span className="user" onClick={toggleDropdown}>
                         <div className="ava">
-                            <Image src={'/images/ava.jpg'} width={100} height={100} />
+                            <Image src={user && user.image ? user.image : '/images/ava.png'} width={100} height={100} />
                         </div>
                         <div className="down"><BsChevronDown /></div>
                     </span>

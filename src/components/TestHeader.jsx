@@ -12,7 +12,7 @@ const TestHeader = ({ questions }) => {
                 {questions.map((item, i) => {
                     return (
                         <div key={i} className="index">
-                            <span>{item.index}</span>
+                            <span>{i+1}</span>
                         </div>
                     )
                 })}

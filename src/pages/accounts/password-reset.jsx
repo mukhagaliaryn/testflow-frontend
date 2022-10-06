@@ -65,10 +65,14 @@ const PasswordReset = () => {
                         <a>{t("accounts.back")}</a>
                     </Link>
                     <div className="input">
-                        {loading ? 
-                            <span>{t("accounts.loading")}</span>  
-                        : 
-                            <button><HiMail />{t("accounts.password-reset.form.submit")}</button>}
+                        <button>
+                            {loading ? 
+                                <span>{t("accounts.loading")}</span> 
+                            :
+                            <>
+                                <HiMail /> {t("accounts.password-reset.form.submit")} 
+                            </>}
+                        </button>
                     </div>
                 </div>
             </form>

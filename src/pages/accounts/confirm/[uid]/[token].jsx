@@ -73,10 +73,14 @@ const PasswordResetConfirm = () => {
                 </div>
                 <div className="input-group submit">
                     <div className="input full">
-                        {loading ? 
-                            <span>{t("accounts.loading")}</span>  
-                        : 
-                            <button><FaLock />{t("accounts.confirm.form.submit")}</button>}
+                        <button>
+                            {loading ? 
+                                <span>{t("accounts.loading")}</span>  
+                            :
+                            <>
+                                <FaLock /> {t("accounts.confirm.form.submit")}
+                            </>}
+                        </button>
                     </div>
                 </div>
             </form>

@@ -19,7 +19,7 @@ const Dropdown = ({user, toggleDropdown, logout }) => {
         >
             <div className="user-drop">
                 <div className="image">
-                    <Image src={"/images/ava.jpg"} width={100} height={100} />
+                    <Image src={user && user.image ? user.image : '/images/ava.png'} width={100} height={100} />
                 </div>
                 {user &&
                 <div className="username">
@@ -29,7 +29,7 @@ const Dropdown = ({user, toggleDropdown, logout }) => {
             </div>
             <ul>
                 <li>
-                    <Link href={"/"}>
+                    <Link href={`/accounts/${user.id}`}>
                         <a>
                             <BiUser />
                             <span>Профиль</span>

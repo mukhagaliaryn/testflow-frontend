@@ -78,12 +78,17 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="input-group submit">
-                    {loading ? <span>{t("accounts.loading")}</span>  
-                    :
-                        <div className="input full">
-                            <button><FaUser /> {t("accounts.register.form.submit")}</button>
-                        </div>
-                    }
+                    <div className="input full">
+                        <button>
+                            {loading ? 
+                                <span>{t("accounts.loading")}</span>
+                            :
+                                <>
+                                    <FaUser /> {t("accounts.register.form.submit")}
+                                </>
+                            }
+                        </button>
+                    </div>
                 </div>
             </form>
 

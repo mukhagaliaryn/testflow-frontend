@@ -35,11 +35,11 @@ const TestLayout = (props) => {
                 <div className="testflow-wrapper">
                     <TestHeader
                         questions={props.questions || []}
+                        quiz={props.quiz}
                     />
 
                     <div className="testflow">
                         <Sidebar 
-                            reverse_quizzes={props.reverse_quizzes} 
                             user_test_data={props.user_test_data}
                         />
                         

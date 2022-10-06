@@ -6,7 +6,7 @@ import { BACKEND_URL } from "../../actions/types";
 import TestLayout from "../../layouts/test";
 
 
-const TestFlow = ({ user_test_data, reverse_quizzes }) => {
+const TestFlow = ({ user_test_data }) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
@@ -15,12 +15,12 @@ const TestFlow = ({ user_test_data, reverse_quizzes }) => {
         router.push('/accounts/login')
     }
 
-    const quiz = reverse_quizzes[0];
+    const quiz = user_test_data.quizzes && user_test_data.quizzes[0];
 
     return (
         <TestLayout
             user_test_data={user_test_data}
-            reverse_quizzes={reverse_quizzes}
+            questions={user_test_data.questions}
         >
             {isAuthenticated &&
                 <div className="testflow-container">
@@ -42,14 +42,12 @@ export async function getServerSideProps(context) {
         }
     }
     const res = await fetch(`${BACKEND_URL}/testflow/${context.params.id}/`, context.req.cookies.access && config)
-    const data = await res.json();
-    const user_test_data = data.user_test_data || {};
-    const reverse_quizzes = data.reverse_quizzes || [];
+    
+    const user_test_data = await res.json();
 
     return {
         props: {
             user_test_data,
-            reverse_quizzes
         }
     }
 }
