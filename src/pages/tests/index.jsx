@@ -15,11 +15,23 @@ const TestDetail = ({ access }) => {
     const [selected, setSelect] = useState(null);
     
     const selectChange = e => {
-        setSelect(e.target.value)
+        setSelect(e.target.value);
     }
     
 
     const onSubmit = async (data) => {
+        const body = {
+            ln: data.ln,
+            test_type: data.test_type,
+            subjects: {
+                first_req: data.first_req,
+                second_req: data.second_req,
+                third_req: data.third_req,
+                first_subject: data.first_subject,
+                second_subject: data.second_subject,
+            }
+        }
+
         try {
             const response = await fetch(`${BACKEND_URL}/testflow/`, {
                 method: "POST",
@@ -27,7 +39,7 @@ const TestDetail = ({ access }) => {
                     "Content-Type": "application/json",
                     "Authorization": `JWT ${access}`
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(body)
             })
 
             const res = await response.json();
@@ -83,7 +95,7 @@ const TestDetail = ({ access }) => {
                                 <input type="hidden" {...register("first_req")} defaultValue="reading" />
                             </div>
                             <div>
-                                <input type="hidden" {...register("second_req")} defaultValue="his-qaz"/>
+                                <input type="hidden" {...register("second_req")} defaultValue="history-kazakh"/>
                             </div>
                             <div>
                                 <input type="hidden" {...register("third_req")} defaultValue="math-lit"/>

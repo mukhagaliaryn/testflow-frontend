@@ -18,7 +18,7 @@ export const SUBJECTS = [
                 value: "Физика",
             },
             {
-                key: "inf",
+                key: "info",
                 value: "Информатика",
             },
             {

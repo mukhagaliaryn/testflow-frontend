@@ -1,4 +1,5 @@
 import { AnimatePresence } from "framer-motion";
+import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
 import React, { useState } from "react";
 import { BsSearch,BsChevronDown, BsBell } from 'react-icons/bs';
@@ -14,7 +15,7 @@ const Header = () => {
     const dispatch = useDispatch();
     const [dropdown, setDropdown] = useState(false);
     const [push, setPush] = useState(false);
-
+    const { t } = useTranslation("common");
 
 
     const toggleDropdown = () => setDropdown(!dropdown);
@@ -33,7 +34,7 @@ const Header = () => {
                 <form className="search">
                     <div className="input-group">
                         <BsSearch />
-                        <input type="text" name="" placeholder="Ищи тесты, результаты и другие..." />
+                        <input type="text" name="" placeholder={t("header.search")} />
                     </div>
                 </form>
                 <div className="accounts">

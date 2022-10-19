@@ -22,10 +22,9 @@
 
         .user {
             h4 {
-                font-size: 14px;
+                font-size: 1rem;
             }
             small {
-                font-size: 12px;
                 color: var(--small-text-color);
             }
         }
@@ -95,11 +94,10 @@
             font-size: 20px;
         }
 
-        span {
+        small {
             display: block;
             text-align: center;
             padding: 10px 0;
-            font-size: 12px;
         }
 
         a {
@@ -109,7 +107,7 @@
             border: 1px solid var(--blue);
             background-color: var(--button-bg);
             color: var(--comp-color);
-            font-size: 12px;
+            font-size: 14px;
 
             &:hover {
                 background-color: transparent;

@@ -14,14 +14,23 @@
             overflow: auto;
 
 
+            // subject testflow page
             .subject-testflow {
+                display: flex;
+                min-width: 1024px;
 
                 .question-box {
-                    border-bottom: 1px solid var(--comp-border);
+                    min-width: 100%;
+                    display: none;
+
                     
                     .question-title {
                         padding: 20px;
                         border-bottom: 1px solid var(--comp-border);
+
+                        .context {
+                            margin-bottom: 20px;
+                        }
 
                         .q-head {
                             display: flex;
@@ -34,20 +43,63 @@
                     }
 
                     .answers {
-                        margin-left: 40px;
-
                         .answer {
-                            padding: 10px;
-                            list-style: upper-alpha;
+                            padding: 10px 20px;
                             display: flex;
                             align-items: flex-start;
-                            
-                            input {
-                                display: inline-block;
+                            cursor: pointer;
+
+                            .radio {
                                 margin-right: 10px;
+                                display:inline-block;
+                                width: 1rem;
+                                height: 1rem;
+                                padding: 1px;
+                                border-radius: 100%;
+                                background-color: transparent;
+                                border: 2px solid var(--color);
+                                cursor:pointer;
+                            }
+
+                            .selected {
+                                border-color: var(--blue);
+                                background-color: var(--blue);
+                            }
+
+                            &:hover {
+                                background-color: var(--hover);
                             }
                         }
+
+                        .selected {
+                            background-color: var(--hover);
+                        }
                     }
+
+                    .btns {
+                        padding: 10px 20px 20px 20px;
+                        display: flex;
+                        justify-content: space-between;
+
+                        button {
+                            cursor: pointer;
+                            padding: 5px 20px;
+                            border-radius: 5px;
+                            background-color: var(--button-bg);
+                            border: 1px solid var(--blue);
+                            color: var(--comp-color);
+
+                            &:hover {
+                                background-color: transparent;
+                                color: var(--blue);
+                            }
+                        }
+
+                    }
+                }
+
+                .show {
+                    display: block;
                 }
             }
         }

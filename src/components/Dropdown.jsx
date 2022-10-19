@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import { BiUser } from 'react-icons/bi';
 import { GoSettings } from 'react-icons/go';
 import { BsFullscreenExit } from 'react-icons/bs';
+import useTranslation from "next-translate/useTranslation";
 
 
 const Dropdown = ({user, toggleDropdown, logout }) => {
+    const { t } = useTranslation("common");
 
     return (
         <motion.div
@@ -23,13 +25,14 @@ const Dropdown = ({user, toggleDropdown, logout }) => {
                 </div>
                 {user &&
                 <div className="username">
+                    <h4>{user.full_name}</h4>
                     <small>{user.email}</small>
                     <small>{user.iin}</small>
                 </div>}
             </div>
             <ul>
                 <li>
-                    <Link href={`/accounts/${user.id}`}>
+                    <Link href={`/accounts/user/${user.id}`}>
                         <a>
                             <BiUser />
                             <span>Профиль</span>
@@ -40,14 +43,14 @@ const Dropdown = ({user, toggleDropdown, logout }) => {
                     <Link href={"/"}>
                         <a>
                             <GoSettings />
-                            <span>Настройка</span>
+                            <span>{t("header.account.setting")}</span>
                         </a>
                     </Link>
                 </li>
                 <li>
                     <span onClick={logout}>
                         <BsFullscreenExit />
-                        <span>Выйти</span>
+                        <span>{t("header.account.logout")}</span>
                     </span>
                 </li>
             </ul>

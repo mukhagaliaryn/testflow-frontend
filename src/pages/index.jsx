@@ -17,6 +17,8 @@ const Home = ({user_test_data}) => {
         router.push('/accounts/login')
     }
 
+    const user_test_data_list = user_test_data || []
+
 
     return (
         <MainLayout
@@ -36,19 +38,22 @@ const Home = ({user_test_data}) => {
                         </div>
                         
                         {/* Reseults */}
-                        {user_test_data.length > 0 ? user_test_data.map((data, i) => {
+                        {user_test_data_list.length > 0 ? user_test_data.map((data, i) => {
                             const datetime = new Date(data.start_time);
                             return (
-                                <div className="results" key={i}>
+                                <div className="results" key={i} onClick={() => router.push(`testflow/${data.id}`)}>
                                     <span id="id">{data.id}</span>
                                     <span id="test">{data.test_type}</span>
                                     <span id="ls">
-                                        {data.quizzes.map((quiz, i) => {
+                                        {data.subjects.map((subject, i) => {
                                             return (
-                                                <div 
-                                                    style={{display: "inline-block", marginRight: "5px"}} key={i}>
-                                                        {!quiz.is_reserve_and_required && quiz.title}
-                                                </div>
+                                                <React.Fragment key={i}>
+                                                    {!subject.is_reserve_and_required && 
+                                                        <div className="test-subject">
+                                                            {subject.title}
+                                                        </div>
+                                                    }
+                                                </React.Fragment>
                                             )
                                         })}
                                     </span>

@@ -1,4 +1,17 @@
 {
+    "navbar": {
+        "main": "Главная",
+        "tests": "Тесты"
+    },
+
+    "header": {
+        "search": "Ищи тесты, результаты и другие...",
+        "account": {
+            "setting": "Настройка",
+            "logout": "Выйти"
+        }
+    },
+
     "accounts": {
         "features": {
             "h1": "Гибкая мобильная приложение",
@@ -18,6 +31,21 @@
                 "iin": {
                     "label": "ИИН",
                     "placeholder": "Номер ИИН"
+                },
+
+                "full_name": {
+                    "label": "Полная имя",
+                    "placeholder": "Введите полная имя"
+                },
+
+                "birthday": {
+                    "label": "День рождение",
+                    "placeholder": "Введите День рождение"
+                },
+
+                "phone": {
+                    "label": "Телефон",
+                    "placeholder": "Введите телефон"
                 },
      
                 "password": {

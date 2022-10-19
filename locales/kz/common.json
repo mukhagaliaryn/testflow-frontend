@@ -1,4 +1,17 @@
 {
+    "navbar": {
+        "main": "Басты бет",
+        "tests": "Тестілеу"
+    },
+
+    "header": {
+        "search": "Тестілеулер, нәтижелер және т.б.",
+        "account": {
+            "setting": "Баптаулар",
+            "logout": "Шығу"
+        }
+    },
+
     "accounts": {
         "features": {
             "h1": "Ыңғайлы мобильді қосымша",
@@ -18,6 +31,21 @@
                 "iin": {
                     "label": "ИИН",
                     "placeholder": "ИИН нөмері"
+                },
+
+                "full_name": {
+                    "label": "Толық аты-жөні",
+                    "placeholder": "Толық аты-жөнін енгізу"
+                },
+
+                "birthday": {
+                    "label": "Туылған күні",
+                    "placeholder": "Туылған күнді енгізу"
+                },
+
+                "phone": {
+                    "label": "Телефон",
+                    "placeholder": "Телефонды енгізу"
                 },
 
                 "password": {

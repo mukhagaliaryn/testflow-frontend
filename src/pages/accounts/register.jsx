@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { check_auth_status, signup } from "../../actions/auth";
-import { BsFillKeyFill } from "react-icons/bs";
+import useTranslation from "next-translate/useTranslation";
+import { BsFillKeyFill, BsFillCalendarDateFill, BsTelephoneFill } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUser } from "react-icons/fa";
-import useTranslation from "next-translate/useTranslation";
 
 
 
@@ -25,7 +25,7 @@ const Register = () => {
 
     const onSubmit = (data) => {
         if (dispatch && dispatch !== null && dispatch !== undefined)
-            dispatch(signup(data.iin, data.email, data.password, data.re_password));
+            dispatch(signup(data.iin, data.email, data.full_name, data.birthday, data.phone, data.password, data.re_password));
     };
 
     useEffect(() => {
@@ -40,7 +40,6 @@ const Register = () => {
 
     if (register_success)
         router.push('/accounts/login');
-    
     
 
     return (
@@ -61,6 +60,27 @@ const Register = () => {
                     <div className="input">
                         <HiMail />
                         <input type="email" {...register("email")} placeholder={t("accounts.register.form.email.placeholder")} required/>
+                    </div>
+                </div>
+                <div className="input-group">
+                    <label htmlFor="">{t("accounts.register.form.full_name.label")}</label>
+                    <div className="input">
+                        <FaUser />
+                        <input type="text" {...register("full_name")} placeholder={t("accounts.register.form.full_name.placeholder")} required/>
+                    </div>
+                </div>
+                <div className="input-group">
+                    <label htmlFor="">{t("accounts.register.form.birthday.label")}</label>
+                    <div className="input">
+                        <BsFillCalendarDateFill />
+                        <input type="date" {...register("birthday")} placeholder={t("accounts.register.form.birthday.placeholder")} required/>
+                    </div>
+                </div>
+                <div className="input-group">
+                    <label htmlFor="">{t("accounts.register.form.phone.label")}</label>
+                    <div className="input">
+                        <BsTelephoneFill />
+                        <input type="phone" {...register("phone")} placeholder={t("accounts.register.form.phone.placeholder")} required/>
                     </div>
                 </div>
                 <div className="input-group">

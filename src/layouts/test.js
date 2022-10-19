@@ -35,7 +35,9 @@ const TestLayout = (props) => {
                 <div className="testflow-wrapper">
                     <TestHeader
                         questions={props.questions || []}
-                        quiz={props.quiz}
+                        subject={props.subject}
+                        moveDot={props.moveDot}
+                        slideIndex={props.slideIndex}
                     />
 
                     <div className="testflow">

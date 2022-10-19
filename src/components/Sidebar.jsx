@@ -5,12 +5,12 @@ import React from "react";
 
 const Sidebar = ({ user_test_data }) => {
     const router = useRouter();
-    const quizzes = user_test_data.quizzes || [];
+    const subjects = user_test_data.subjects || [];
 
     return (
         <div className="sidebar">
             <ul className="quizzes">
-                {quizzes.length > 0 && quizzes.map((item, i) => {
+                {subjects.length > 0 && subjects.map((item, i) => {
                     return (
                         <li key={i} className={router.asPath === `/testflow/${user_test_data.id}/${item.slug}` ? "active": ""}>
                             <Link href={`/testflow/${user_test_data.id}/${item.slug}`}>

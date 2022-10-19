@@ -74,6 +74,10 @@
 
                     #ls {
                         flex-wrap: wrap;
+
+                        .test-subject {
+                            margin-right: 5px;
+                        }
                     }
 
                     #status {
@@ -139,7 +143,6 @@
                         border-radius: 5px;
                         border: 1px solid var(--blue);
                         background-color: var(--button-bg);
-                        font-size: 14px;
                         color: var(--comp-color);
 
                         &:hover {
@@ -206,12 +209,9 @@
 
             // Test category detail page
             .test-category-detail {
-                margin: 20px auto;
-                border: 1px solid var(--comp-border);
+                border-bottom: 1px solid var(--comp-border);
                 padding: 20px;
                 border-radius: 5px;
-                min-width: 400px;
-                max-width: 620px;
 
                 .head {
                     display: flex;
@@ -230,7 +230,6 @@
 
                 .description {
                     padding: 10px 20px;
-                    font-size: 14px;
 
                     ul {
                         margin-left: 20px;
@@ -252,7 +251,6 @@
                         select {
                             width: 100%;
                             padding: 10px 20px;
-                            font-size: 14px;
                             font-family: "Inter", sans-serif;
                             border-radius: 5px;
                             border: 1px solid var(--comp-border);
@@ -270,7 +268,6 @@
                             background-color: var(--button-bg);
                             border: 1px solid var(--blue);
                             border-radius: 5px;
-                            font-size: 14px;
                             display: block;
                             width: 100%;
                             cursor: pointer;
