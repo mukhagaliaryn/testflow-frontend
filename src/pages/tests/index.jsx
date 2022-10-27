@@ -72,15 +72,6 @@ const TestDetail = ({ access }) => {
                             <TiFlowParallel />
                             <h2>Ұлттық Біріңғай Тестілеу</h2>
                         </div>
-                        <div className="description">
-                            <p>Міндетті пәндер:</p>
-                            <ul>
-                                <li>Математикалық сауаттылық</li>
-                                <li>Оқу сауаттылығы</li>
-                                <li>Қазақстан Тарихы</li>
-                            </ul>
-                        </div>
-
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="input-group">
                                 <select {...register("ln")}>
@@ -92,15 +83,24 @@ const TestDetail = ({ access }) => {
                                 <input type="hidden" {...register("test_type")} defaultValue="ENT" />
                             </div>
                             <div>
-                                <input type="hidden" {...register("first_req")} defaultValue="reading" />
+                                <input type="hidden" {...register("first_req")} defaultValue="history-kazakh" />
                             </div>
                             <div>
-                                <input type="hidden" {...register("second_req")} defaultValue="history-kazakh"/>
+                                <input type="hidden" {...register("second_req")} defaultValue="reading"/>
                             </div>
                             <div>
                                 <input type="hidden" {...register("third_req")} defaultValue="math-lit"/>
                             </div>
-
+                            
+                            <div className="input-group">
+                                <input type="text" defaultValue={"Оқу сауаттылығы"} disabled/>
+                            </div>
+                            <div className="input-group">
+                                <input type="text" defaultValue={"Қазақстан тарихы"} disabled/>
+                            </div>
+                            <div className="input-group">
+                                <input type="text" defaultValue={"Математикалық сауаттылық"} disabled/>
+                            </div>
                             <div className="input-group">
                                 <select {...register("first_subject")} onChange={e => selectChange(e)} required>
                                     {SUBJECTS.map((item, i) => (
@@ -131,19 +131,17 @@ const TestDetail = ({ access }) => {
 }
 
 export async function getServerSideProps(context) {
-    const config = {
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `JWT ${context.req.cookies.access}`
-        }
-    }
-    const res = await fetch(`${BACKEND_URL}/testflow/`, context.req.cookies.access && config)
-    const user_test_data = await res.json();
+    // const config = {
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //         "Authorization": `JWT ${context.req.cookies.access}`
+    //     }
+    // }
+    // const res = await fetch(`${BACKEND_URL}/testflow/`, context.req.cookies.access && config)
 
     return {
         props: {
-            user_test_data,
-            access: context.req.cookies.access
+            access: context.req.cookies.access || null
         }
     }
 }

@@ -3,18 +3,17 @@ import { useRouter } from "next/router";
 import React from "react";
 
 
-const Sidebar = ({ user_test_data }) => {
+const Sidebar = ({ user_test_data, first_questions }) => {
     const router = useRouter();
-    const subjects = user_test_data.subjects || [];
 
     return (
         <div className="sidebar">
             <ul className="quizzes">
-                {subjects.length > 0 && subjects.map((item, i) => {
+                {first_questions.length > 0 && first_questions.map((item, i) => {
                     return (
-                        <li key={i} className={router.asPath === `/testflow/${user_test_data.id}/${item.slug}` ? "active": ""}>
-                            <Link href={`/testflow/${user_test_data.id}/${item.slug}`}>
-                                <a>{item.title}</a>
+                        <li key={i} className={router.query.slug === item.subject.slug ? "active": ""}>
+                            <Link href={`/testflow/${user_test_data.id}/${item.subject.slug}/question/${item.id}`}>
+                                <a>{item.subject.title}</a>
                             </Link>
                         </li>
                     )

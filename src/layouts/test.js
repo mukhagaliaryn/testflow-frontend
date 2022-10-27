@@ -35,14 +35,14 @@ const TestLayout = (props) => {
                 <div className="testflow-wrapper">
                     <TestHeader
                         questions={props.questions || []}
+                        user_test_data={props.user_test_data}
                         subject={props.subject}
-                        moveDot={props.moveDot}
-                        slideIndex={props.slideIndex}
                     />
 
                     <div className="testflow">
                         <Sidebar 
                             user_test_data={props.user_test_data}
+                            first_questions={props.first_questions}
                         />
                         
                         {/* =============================== */}

@@ -207,48 +207,35 @@
             //     }
             // }
 
+
             // Test category detail page
             .test-category-detail {
                 border-bottom: 1px solid var(--comp-border);
                 padding: 20px;
-                border-radius: 5px;
 
                 .head {
                     display: flex;
                     align-items: center;
                     border-bottom: 1px solid var(--comp-border);
                     padding-bottom: 10px;
+                    justify-content: center;
 
                     svg {
                         font-size: 2rem;
                     }
 
-                    h1 {
+                    h2 {
                         padding-left: 10px;
                     }
                 }
 
-                .description {
-                    padding: 10px 20px;
-
-                    ul {
-                        margin-left: 20px;
-
-                        li {
-                            list-style: disc;
-                        }
-                    }
-
-                }
-
                 form {
                     padding-top: 10px;
-                    border-top: 1px solid var(--comp-border);
 
                     .input-group {
                         padding-bottom: 10px;
                         
-                        select {
+                        select, input {
                             width: 100%;
                             padding: 10px 20px;
                             font-family: "Inter", sans-serif;

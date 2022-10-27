@@ -30,6 +30,7 @@
                     color: var(--comp-color);
                     font-family: "Inter", sans-serif;
                     border-radius: 5px;
+                    font-size: 12px;
                     border: 1px solid var(--comp-input);
 
                     &:focus {
@@ -121,6 +122,7 @@
             margin: 0 5px;
             transition: all .3s;
             cursor: pointer;
+            color: var(--comp-color);
             overflow: hidden;
 
             &:hover {
