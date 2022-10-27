@@ -42,6 +42,8 @@
                     }
 
                     .answers {
+                        padding-bottom: 20px;
+
                         .answer {
                             padding: 10px 20px;
                             display: flex;
@@ -51,30 +53,42 @@
                             .radio {
                                 margin-right: 10px;
                                 display:inline-block;
-                                width: 1rem;
-                                height: 1rem;
-                                padding: 1px;
+                                padding: 2px;
                                 border-radius: 100%;
-                                background-color: transparent;
                                 border: 2px solid var(--color);
                                 cursor:pointer;
+
+                                span {
+                                    display: block;
+                                    width: 0.6rem;
+                                    height: 0.6rem;
+                                    border-radius: 100%;
+                                    background-color: transparent;
+                                }
                             }
 
                             .checkbox {
                                 margin-right: 10px;
-                                display: inline-block;
-                                width: 1rem;
-                                height: 1rem;
-                                padding: 1px;
+                                padding: 2px;
                                 border-radius: 3px;
-                                background-color: transparent;
                                 border: 2px solid var(--color);
                                 cursor:pointer;
+
+                                span {
+                                    display: block;
+                                    width: 0.6rem;
+                                    height: 0.6rem;
+                                    border-radius: 2px;
+                                    background-color: transparent;
+                                }
                             }
 
                             .selected {
                                 border-color: var(--blue);
-                                background-color: var(--blue);
+
+                                span {
+                                    background-color: var(--blue);
+                                }
                             }
 
                             &:hover {

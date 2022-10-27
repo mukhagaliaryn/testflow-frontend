@@ -34,7 +34,7 @@ const TestLayout = (props) => {
             <div id="root">
                 <div className="testflow-wrapper">
                     <TestHeader
-                        questions={props.questions || []}
+                        user_answers={props.user_answers || []}
                         user_test_data={props.user_test_data}
                         subject={props.subject}
                     />

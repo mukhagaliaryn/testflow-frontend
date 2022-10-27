@@ -113,17 +113,26 @@
         
 
         .index {
-            min-width: 30px;
             position: relative;
-            padding: 5px;
-            text-align: center;
-            border-radius: 5px;
-            background-color: var(--blue);
-            margin: 0 5px;
+            min-width: 30px;
             transition: all .3s;
-            cursor: pointer;
-            color: var(--comp-color);
+            margin: 0 5px;
             overflow: hidden;
+            border-radius: 5px;
+
+            .number {
+                padding: 5px;
+                text-align: center;
+                border-radius: 5px;
+                display: inline-block;
+                width: 100%;
+                background-color: var(--blue);
+                color: var(--comp-color);
+            }
+
+            .answered {
+                background-color: #06d6a0;
+            }
 
             &:hover {
                 opacity: .7;
@@ -131,10 +140,8 @@
         }
 
         .show {
-            
             &::after {
                 content: "";
-                display: block;
                 position: absolute;
                 bottom: 0;
                 left: 0;

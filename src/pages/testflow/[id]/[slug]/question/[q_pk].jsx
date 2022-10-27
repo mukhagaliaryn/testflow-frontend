@@ -3,12 +3,14 @@ import { BACKEND_URL } from "../../../../../actions/types";
 import TestLayout from "../../../../../layouts/test";
 import parse from 'html-react-parser';
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 
-const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user_answer, user_answers }) => {
+const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user_answer, user_answers, access }) => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const router = useRouter();
 
-    const choiceAnswer = async (id, q_id, a_id) => {
+    const oneChoiceAnswer = async (id, q_id, a_id) => {
 
         try {
             const response = await fetch(`${BACKEND_URL}/testflow/user-answer/${id}/${q_id}/${a_id}/`, {
@@ -19,7 +21,7 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
                 },
             });
 
-            console.log(response.status);
+            router.push(router.asPath);
         } catch {
             console.log('Error!');
         }
@@ -29,7 +31,7 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
         <TestLayout
             title={subject.title}
             user_test_data={user_test_data}
-            questions={user_answers}
+            user_answers={user_answers}
             user_answer={user_answer}
             subject={subject}
             first_questions={first_questions}
@@ -56,15 +58,13 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
                                 return (
                                     <React.Fragment key={i}>
                                         {user_answer.question.format === "ONE" ?
-                                            <li className="answer" >
-                                                {/* <div className={user_answer.answers.find(id => id === answer.id) ? "radio selected" : "radio"}></div> */}
-                                                <input type="radio" onChange={choiceAnswer} checked={user_answer.answers.find(id => id === answer.id) ? true : false} name={user_answer.question.id} id={user_answer.question.id + " " + answer.id} />
-                                                <label htmlFor={user_answer.question.id + " " + answer.id}>{parse(answer.text)}</label>
+                                            <li onClick={() => oneChoiceAnswer(user_test_data.id, user_answer.question.id, answer.id)} className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
+                                                <div className={user_answer.answers.find(id => id === answer.id) ? "radio selected" : "radio"}><span></span></div>
+                                                <span>{parse(answer.text)}</span>
                                             </li>
                                         :
-                                            <li className="answer">
-                                                {/* <div className={user_answer.answers.find(id => id === answer.id) ? "checkbox selected" : "checkbox"}></div> */}
-                                                <input type="checkbox" />
+                                            <li onClick={() => oneChoiceAnswer(user_test_data.id, user_answer.question.id, answer.id)} className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
+                                                <div className={user_answer.answers.find(id => id === answer.id) ? "checkbox selected" : "checkbox"}><span></span></div>
                                                 <span>{parse(answer.text)}</span>
                                             </li>
                                         }
