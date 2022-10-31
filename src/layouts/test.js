@@ -19,7 +19,6 @@ const TestLayout = (props) => {
 
     }, [dispatch]);
 
-
     return (
         <React.Fragment>
             <Head>
@@ -43,6 +42,7 @@ const TestLayout = (props) => {
                         <Sidebar 
                             user_test_data={props.user_test_data}
                             first_questions={props.first_questions}
+                            finishHandler={props.finishHandler}
                         />
                         
                         {/* =============================== */}

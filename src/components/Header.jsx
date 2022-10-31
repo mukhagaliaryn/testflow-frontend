@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { BsSearch,BsChevronDown, BsBell } from 'react-icons/bs';
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +11,7 @@ import PushDown from "./PushDown";
 
 
 
-const Header = () => {
+const Header = ({user_account}) => {
     const user = useSelector(state => state.auth.user)
     const dispatch = useDispatch();
     const [dropdown, setDropdown] = useState(false);
@@ -19,7 +20,6 @@ const Header = () => {
 
 
     const toggleDropdown = () => setDropdown(!dropdown);
-
     const togglePushDropdown = () => setPush(!push);
 
     const logoutHandler = () => {
@@ -27,7 +27,7 @@ const Header = () => {
             dispatch(logout())
         }
     }
-
+    
     return (
         <div className="header">
             <div className="intro-header">
@@ -38,6 +38,19 @@ const Header = () => {
                     </div>
                 </form>
                 <div className="accounts">
+                    {user_account && (user_account.role === "STUDENT" ? 
+                        <Link href="/tests">
+                            <a className="goto">{t("header.account.go-to")}</a>
+                        </Link>
+                    :
+                        user_account.role === "TEACHER" ? 
+                            <Link href="/tests">
+                                <a className="goto">{t("header.account.add-test")}</a>
+                            </Link>
+                    :    
+                        null
+                    )}
+
                     <span className="push" onClick={togglePushDropdown}><BsBell /></span>
 
                     <span className="user" onClick={toggleDropdown}>

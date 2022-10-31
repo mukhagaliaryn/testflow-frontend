@@ -47,6 +47,20 @@
             height: 100%;
             color: var(--comp-color);
 
+            .goto {
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
+                background-color: var(--button-bg);
+                border: 1px solid var(--blue);
+                color: var(--comp-color);
+                margin-left: 10px;
+
+                &:hover {
+                    opacity: .7;
+                }
+            }
+
             .push {
                 height: 100%;
                 padding: 0 20px;

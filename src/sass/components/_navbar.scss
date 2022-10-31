@@ -23,6 +23,10 @@
         .user {
             h4 {
                 font-size: 1rem;
+                -webkit-line-clamp: 1; 
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                overflow: hidden;
             }
             small {
                 color: var(--small-text-color);
@@ -100,7 +104,7 @@
             padding: 10px 0;
         }
 
-        a {
+        span {
             display: block;
             padding: 5px 20px;
             border-radius: 5px;
@@ -165,6 +169,7 @@
             background-color: var(--button-bg);
             color: var(--comp-color);
             text-align: center;
+            cursor: pointer;
 
 
             &:hover {

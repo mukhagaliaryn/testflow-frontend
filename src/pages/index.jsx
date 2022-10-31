@@ -1,100 +1,38 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useSelector } from "react-redux";
 import { BACKEND_URL } from "../actions/types";
 import MainLayout from "../layouts/main";
-import { AiFillCaretRight, AiOutlineCheckCircle, AiOutlineFieldTime } from "react-icons/ai";
-import { RiErrorWarningLine } from 'react-icons/ri';
+import StudentUserTestData from "../components/roles/student/UserTestData";
+import AdminUserTestData from "../components/roles/admin/UserTestData";
+import useTranslation from "next-translate/useTranslation";
 
 
-const Home = ({user_test_data, user_account }) => {
+const Home = ({ user_test_data, user_account }) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const { t } = useTranslation("common");
 
-    
-    if(typeof window !== 'undefined' && !isAuthenticated) {
+
+    if (typeof window !== 'undefined' && !isAuthenticated) {
         router.push('/accounts/login')
     }
 
     return (
         <MainLayout
-            title={"Testflow - Онлайн платформа для тестового потока"}
-            heading={"Мой тесты"}
+            title={t("main.header.title")}
+            heading={user_account && user_account.role !== "ADMIN" ? t("main.header.heading") : t("main.header.heading_admin")}
+            user_account={user_account && user_account}
         >
-            {isAuthenticated &&
-                <div className="main-container">
-                    <div className="user-tests-data">
-                        <div className="head">
-                            <span id="id">ID</span>
-                            <span id="test">Тест</span>
-                            <span id="ls">Предметы</span>
-                            <span id="ln">Язык</span>
-                            <span id="time">Начало/Завершение</span>
-                            <span id="status">Статус</span>
-                        </div>
-                        
-                        {/* Reseults */}
-                        {user_test_data.length > 0 ? user_test_data.map((data, i) => {
-                            const datetime = new Date(data.start_time);
-                            return (
-                                <div className="results" key={i} onClick={() => router.push(`testflow/${data.id}`)}>
-                                    <span id="id">{data.id}</span>
-                                    <span id="test">{data.test_type}</span>
-                                    <span id="ls">
-                                        {data.subjects.map((subject, i) => {
-                                            return (
-                                                <React.Fragment key={i}>
-                                                    {!subject.is_reserve_and_required && 
-                                                        <div className="test-subject">
-                                                            {subject.title}
-                                                        </div>
-                                                    }
-                                                </React.Fragment>
-                                            )
-                                        })}
-                                    </span>
-                                    <span id="ln">{data.ln === 'KZ' ? "Қазақша" : "Русский"}</span>
-                                    <span id="time">
-                                        {datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds()}
-                                        -
-                                        {datetime.getHours() + 4 + ":" + datetime.getMinutes() + ":" + datetime.getSeconds()}
-                                    </span>
-                                    <span id="status">
-                                        {data.status === true ?
-                                            <div className="finish">
-                                                <p>Завершено</p> 
-                                                <AiOutlineCheckCircle />
-                                            </div> 
-                                        : 
-                                            <div className="process">
-                                                <p>В процессе</p>
-                                                <AiOutlineFieldTime />
-                                                
-                                                <Link href={`testflow/${data.id}`}>
-                                                    <a className="goto-testflow"><AiFillCaretRight /></a>
-                                                </Link>
-                                            </div>
-                                        }
-                                    </span>
-
-                                </div>
-                            )
-                        })
-                    :
-                        <div className="no-content">
-                            <RiErrorWarningLine />
-                            <span>
-                                Әзірше бірде-бір тест тапсыру сессиясы ашылмаған.
-                                Алғашқы тест тапсырып, өз біліміңді тексеріп көр!
-                            </span>
-                            <Link href={"/tests"}>
-                                <a>Алғашқы тест сессиясын ашу</a>
-                            </Link>                            
-                        </div>
-                    }
-                    </div>
-                </div>
+            {isAuthenticated && user_account &&
+                user_account.role === "STUDENT" ?
+                    <StudentUserTestData user_test_data={user_test_data} />
+                : user_account && user_account.role === "TEACHER" ?
+                    <StudentUserTestData user_test_data={user_test_data} />
+                : user_account && user_account.role === "ADMIN" ?
+                    <AdminUserTestData user_test_data={user_test_data} />
+                :
+                    null
             }
         </MainLayout>
     )

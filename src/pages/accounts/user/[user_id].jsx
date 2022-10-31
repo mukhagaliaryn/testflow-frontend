@@ -38,7 +38,7 @@ const Profile = ({ user_account, access }) => {
 
             if (response.status == 200) {
                 router.push(`/accounts/user/${user.id}`);
-                dispatch(setAlert("Профиль изменено!", "success"));
+                dispatch(setAlert("Профиль сохранено!", "success"));
             } else {
                 dispatch(setAlert("Что-то пошло не так. Повторите пожалуйста!", "error"));
             }
@@ -78,11 +78,12 @@ const Profile = ({ user_account, access }) => {
         <MainLayout
             title={user && user.full_name}
             heading={user && user.full_name}
+            user_account={user_account}
         >
             {isAuthenticated &&
                 <div className="profile-container">
                     {user && tenant &&
-                        <>
+                        <React.Fragment>
                             <div className="user-personal-name">
                                 <div className="image">
                                     <Image src={user.image ? user.image : '/images/ava.png'} width={100} height={100} />
@@ -91,7 +92,7 @@ const Profile = ({ user_account, access }) => {
                                     <h2>{user.full_name}</h2>
                                     <span id="iin">{user.iin}</span>
                                     <span id="role">{user_account.role}</span>
-                                    <small><AiFillLock /> {tenant.title}</small>
+                                    <small><AiFillLock /> {tenant.tenant_name}</small>
                                 </div>
                             </div>
                             
@@ -183,7 +184,7 @@ const Profile = ({ user_account, access }) => {
                                     </div>
                                 </div>
                             </form>
-                        </>
+                        </React.Fragment>
                     }
                 </div>
             }

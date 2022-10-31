@@ -1,52 +1,41 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import { useSelector } from "react-redux";
-import { BACKEND_URL } from "../../actions/types";
-import TestLayout from "../../layouts/test";
-import Moment from 'react-moment';
 import { AiOutlineCheckCircle, AiOutlineFieldTime } from "react-icons/ai";
+import Moment from "react-moment";
+import { useSelector } from "react-redux";
+import { BACKEND_URL } from "../../../actions/types";
+import TestLayout from "../../../layouts/test";
 
 
-const TestFlow = ({user_test_data, first_questions, access}) => {
+const TestFlow = ({user_test_data, first_questions}) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
 
     const get_sum = (arr) => {
         let sum = 0;
+
         for (let i = 0; i < arr.length; i++) {
             sum += arr[i].max_mark;
         }
         return sum
     }
 
-    const finishHandler = async () => {
-        try {
-            const response = await fetch(`${BACKEND_URL}/testflow/user-answer/${user_test_data.id}/finish/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `JWT ${access}`
-                },
-            })
+    const get_user_answer_sum = (arr) => {
+        let sum = 0;
 
-            if (response.status == 200) {
-                router.push(`/testflow/results/${user_test_data.id}`)
-            } else {
-                alert('Error!')
-            }
-
-        } catch (e) {
-            console.log(e);
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i].mark;
         }
+        return sum
     }
+    
+
+    console.log(user_test_data);
+
 
     if(typeof window !== 'undefined' && !isAuthenticated) {
         router.push('/accounts/login')
-    }
-
-    if(typeof window !== 'undefined' && (user_test_data && user_test_data.status)) {
-        router.push(`/testflow/results/${user_test_data.id}`)
     }
 
     return (
@@ -54,7 +43,6 @@ const TestFlow = ({user_test_data, first_questions, access}) => {
             title={"Тестілеу ағымы (ҰБТ) - TestFlow"}
             user_test_data={user_test_data}
             first_questions={first_questions}
-            finishHandler={finishHandler}
         >
             {isAuthenticated &&
                 <div className="testflow-container">
@@ -98,20 +86,22 @@ const TestFlow = ({user_test_data, first_questions, access}) => {
                         {user_test_data.subjects.map((subject, i) => {
                             return (
                                 <div className="result" key={i}>
-                                    <span id="subject">{router.locale === "ru" ? subject.title : subject.title_kk}</span>
+                                    <span id="subject">{subject.title}</span>
                                     <span id="questions">{subject.question_count}</span>
                                     <span id="max-balls">
                                         {get_sum(user_test_data.get_user_answers.filter(obj => obj.question.subject.slug === subject.slug))}
                                     </span>
-                                    <span id="balls">-</span>
+                                    <span id="balls">
+                                        {get_user_answer_sum(user_test_data.get_user_answers.filter(obj => obj.question.subject.slug === subject.slug))}
+                                    </span>
                                 </div>
                             )
                         })}
                     </div>
                     
                     <div className="bottom">
-                        <Link href={`/testflow/${user_test_data.id}/${first_questions[0].subject.slug}/question/${first_questions[0].id}`}>
-                            <a className="start-test">Тестілеуді бастау</a>
+                        <Link href={`/testflow/results/${user_test_data.id}/${first_questions[0].subject.slug}/question/${first_questions[0].id}`}>
+                            <a className="start-test">Қатемен жұмыс жасау</a>
                         </Link>
                     </div>
                 </div>
@@ -136,8 +126,7 @@ export async function getServerSideProps(context) {
     return {
         props: {
             user_test_data,
-            first_questions,
-            access: context.req.cookies.access || null
+            first_questions
         }
     }
 }

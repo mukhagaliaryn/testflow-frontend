@@ -35,10 +35,10 @@ const MainLayout = (props) => {
             </Script>
             <div id="root" >
                 <div className="main-wrapper">
-                    <Navbar />
+                    <Navbar user_account={props.user_account} />
                     
                     <div className="main">
-                        <Header />
+                        <Header user_account={props.user_account} />
                         <div className="heading">
                             <h4>{props.heading}</h4>
                         </div>
@@ -46,7 +46,7 @@ const MainLayout = (props) => {
                     </div>
                 </div>
 
-                {/* <nav className="i18next">
+                <nav className="i18next">
                     {router.locales.map(locale => (
                         <Link href={router.asPath} locale={locale} key={locale}>
                             <a>
@@ -54,7 +54,7 @@ const MainLayout = (props) => {
                             </a>
                         </Link>
                     ))}
-                </nav> */}
+                </nav>
             </div>
         </React.Fragment>
     )

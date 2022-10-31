@@ -1,6 +1,6 @@
 import React from "react";
-import { BACKEND_URL } from "../../../../../actions/types";
-import TestLayout from "../../../../../layouts/test";
+import { BACKEND_URL } from "../../../../../../actions/types";
+import TestLayout from "../../../../../../layouts/test";
 import parse from 'html-react-parser';
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
@@ -10,44 +10,6 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const router = useRouter();
 
-    const oneChoiceAnswer = async (id, q_id, a_id) => {
-
-        try {
-            const response = await fetch(`${BACKEND_URL}/testflow/user-answer/${id}/${q_id}/${a_id}/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `JWT ${access}`
-                },
-            });
-
-            router.push(router.asPath);
-        } catch {
-            console.log('Error!');
-        }
-    }
-
-    const finishHandler = async () => {
-        try {
-            const response = await fetch(`${BACKEND_URL}/testflow/user-answer/${user_test_data.id}/finish/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `JWT ${access}`
-                },
-            })
-
-            if (response.status == 200) {
-                router.push(`/testflow/results/${user_test_data.id}`)
-            } else {
-                alert('Error!')
-            }
-
-        } catch (e) {
-            console.log(e);
-        }
-    }
-
     return (
         <TestLayout
             title={subject.title}
@@ -56,7 +18,6 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
             user_answer={user_answer}
             subject={subject}
             first_questions={first_questions}
-            finishHandler={finishHandler}
         >
             {isAuthenticated &&
                 <div className="question-testflow">
@@ -80,13 +41,17 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
                                 return (
                                     <React.Fragment key={i}>
                                         {user_answer.question.format === "ONE" ?
-                                            <li onClick={() => oneChoiceAnswer(user_test_data.id, user_answer.question.id, answer.id)} className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
-                                                <div className={user_answer.answers.find(id => id === answer.id) ? "radio selected" : "radio"}><span></span></div>
+                                            <li className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
+                                                <div className={user_answer.answers.find(id => id === answer.id) ? "radio selected" : "radio"}>
+                                                    <span></span>
+                                                </div>
                                                 <span>{parse(answer.text)}</span>
                                             </li>
                                         :
-                                            <li onClick={() => oneChoiceAnswer(user_test_data.id, user_answer.question.id, answer.id)} className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
-                                                <div className={user_answer.answers.find(id => id === answer.id) ? "checkbox selected" : "checkbox"}><span></span></div>
+                                            <li className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
+                                                <div className={user_answer.answers.find(id => id === answer.id) ? "checkbox selected" : "checkbox"}>
+                                                    <span></span>
+                                                </div>
                                                 <span>{parse(answer.text)}</span>
                                             </li>
                                         }

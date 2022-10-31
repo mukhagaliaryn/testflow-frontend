@@ -14,7 +14,7 @@ const App = ({ Component, pageProps }) => {
         color="#0d99ff"
         startPosition={0.3}
         stopDelayMs={200}
-        height={2}
+        height={3}
         showOnShallow={true}
       />
       <Component {...pageProps} />

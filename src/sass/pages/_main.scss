@@ -37,20 +37,22 @@
 
                 .head {
                     display: grid;
-                    grid-template-columns: repeat(6, 1fr);
                     border-bottom: 1px solid var(--comp-border);
                     padding: 0 20px;
 
                     span {
                         display: block;
                         color: var(--small-text-color);
-                        padding: 0 10px 10px 10px;
+                        margin: 0 10px 10px 10px;
+                        -webkit-line-clamp: 1; 
+                        -webkit-box-orient: vertical;
+                        display: -webkit-box;
+                        overflow: hidden;
                     }
                 }
 
                 .results {
                     display: grid;
-                    grid-template-columns: repeat(6, 1fr);
                     padding: 0 20px;
 
                     span {
@@ -109,6 +111,14 @@
                             transform: translateX(5px);
                         }
                     }
+                }
+
+                .admin {
+                    grid-template-columns: repeat(5, 1fr);
+                }
+
+                .student {
+                    grid-template-columns: repeat(6, 1fr);
                 }
 
 

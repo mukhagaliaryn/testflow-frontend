@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import useTranslation from "next-translate/useTranslation";
 
 
-const Navbar = () => {
+const Navbar = ({ user_account }) => {
     const router = useRouter();
     const user = useSelector(state => state.auth.user)
     const { t } = useTranslation("common");
@@ -34,15 +34,17 @@ const Navbar = () => {
                         <a><RiHome5Line />{t("navbar.main")}</a>
                     </Link>
                 </li>
-                <li className={router.pathname === "/tests" ? "active": ""}>
-                    <Link href={"/tests"}>
-                        <a><TbLayoutList />{t("navbar.tests")}</a>
-                    </Link>
-                </li>
+                {(user_account && user_account.role !== "ADMIN") &&
+                    <li className={router.pathname === "/tests" ? "active": ""}>
+                        <Link href={"/tests"}>
+                            <a><TbLayoutList />{t("navbar.tests")}</a>
+                        </Link>
+                    </li>
+                }
             </ul>
 
-            <div className="upgrade-plan">
-            <GrUpgrade />
+            {/* <div className="upgrade-plan">
+                <GrUpgrade />
                 <small>
                     Тегін тарифтегі мүмкіндіктер бітті ме? <br />
                     Premium тарифіндегі жаңа мүмкіндіктермен өзіңді дамыт!
@@ -50,7 +52,7 @@ const Navbar = () => {
                 <Link href={"/plans"}>
                     <a>Тарифтер</a>
                 </Link>  
-            </div>
+            </div> */}
         </div>
     )
 }

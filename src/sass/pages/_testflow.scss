@@ -14,8 +14,101 @@
             overflow: auto;
 
 
-            // subject testflow page
-            .subject-testflow {
+            // testflow page
+            .testflow-container {
+
+                .test-time {
+                    padding: 20px;
+                    border-bottom: 1px solid var(--comp-border);
+
+                    .status {
+                        span {
+                            display: inline-flex;
+                            align-items: center;
+
+                            svg {
+                                margin-left: 5px;
+                            }
+                        }
+
+                        .finish {
+                            margin-left: 5px;
+                            color: green;
+                        }
+                        .proccess {
+                            margin-left: 5px;
+                            color: blue;
+                        }
+                    }
+                }
+                
+                .test-features {
+
+                    .head {
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        border-bottom: 1px solid var(--comp-border);
+                        padding: 0 20px;
+
+                        span {
+                            display: block;
+                            color: var(--small-text-color);
+                            margin: 10px;
+                            -webkit-line-clamp: 1; 
+                            -webkit-box-orient: vertical;
+                            display: -webkit-box;
+                            overflow: hidden;
+                        }
+                    }
+
+                    .result {
+                        display: grid;
+                        padding: 0 20px;
+                        grid-template-columns: repeat(4, 1fr);
+
+                        span {
+                            display: flex;
+                            align-items: center;
+                            padding: 10px;
+                            cursor: pointer;
+                            position: relative;
+                        }
+
+                        &:hover {
+                            background-color: var(--hover);
+    
+                            .goto-testflow {
+                                visibility: visible;
+                                opacity: 1;
+                                transform: translateX(5px);
+                            }
+                        }
+                    }
+                }
+
+                .bottom {
+
+                    .start-test {
+                        display: inline-block;
+                        margin: 20px;
+                        padding: 10px 40px;
+                        background-color: var(--button-bg);
+                        border: 1px solid var(--blue);
+                        color: var(--comp-color);
+                        border-radius: 5px;
+                        
+                        &:hover {
+                            background-color: transparent;
+                            color: var(--blue);
+                            border: 1px solid var(--blue);
+                        }
+                    }
+                }
+            }
+
+
+            // question testflow page
+            .question-testflow {
                 display: flex;
                 min-width: 1024px;
 
