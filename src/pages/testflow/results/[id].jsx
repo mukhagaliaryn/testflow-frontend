@@ -1,3 +1,4 @@
+import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
@@ -11,6 +12,7 @@ import TestLayout from "../../../layouts/test";
 const TestFlow = ({user_test_data, first_questions}) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const { t } = useTranslation("common");
 
     const get_sum = (arr) => {
         let sum = 0;
@@ -29,10 +31,6 @@ const TestFlow = ({user_test_data, first_questions}) => {
         }
         return sum
     }
-    
-
-    console.log(user_test_data);
-
 
     if(typeof window !== 'undefined' && !isAuthenticated) {
         router.push('/accounts/login')
@@ -40,35 +38,35 @@ const TestFlow = ({user_test_data, first_questions}) => {
 
     return (
         <TestLayout
-            title={"Тестілеу ағымы (ҰБТ) - TestFlow"}
+            title={"Тестілеу ағымы аяқталды - TestFlow"}
             user_test_data={user_test_data}
             first_questions={first_questions}
         >
             {isAuthenticated &&
                 <div className="testflow-container">
                     <div className="test-time">
-                        <div className="start">
-                            <span>Басталған уақыты: </span>
-                            <span><Moment format="DD.MM.YYYY - HH:MM:SS" date={user_test_data.start_time} /></span>
+                        <div className="group">
+                            <span className="label">{t("testflow.test-time.start-time")}</span>
+                            <span className="value"><Moment format="DD.MM.YYYY - HH:MM:SS" date={user_test_data.start_time} /></span>
                         </div>
-                        <div className="end">
-                            <span>Аяқалған уақыты: </span>
-                            <span>-</span>
+                        <div className="group">
+                            <span className="label">{t("testflow.test-time.end-time")}</span>
+                            <span className="value">-</span>
                         </div>
-                        <div className="language">
-                            <span>Язык: </span>
-                            <span>{user_test_data.ln === "RU" ? "Русский" : "Қазақша"}</span>
+                        <div className="group">
+                            <span className="label">{t("testflow.test-time.ln")}</span>
+                            <span className="value">{user_test_data.ln === "RU" ? "Русский" : "Қазақша"}</span>
                         </div>
-                        <div className="status">
-                            <span>Статус: </span>
+                        <div className="group">
+                            <span className="label">Статус: </span>
                             {user_test_data.status ?
-                                <span className="finish">
-                                    Аяқталды
+                                <span className="value finish">
+                                    <span>{t("testflow.test-time.finish")}</span> 
                                     <AiOutlineCheckCircle />
                                 </span>
                             :
-                                <span className="proccess">
-                                    Процесс үстінде
+                                <span className="value proccess">
+                                    <span>{t("testflow.test-time.process")}</span>
                                     <AiOutlineFieldTime />
                                 </span>
                             }
@@ -77,10 +75,10 @@ const TestFlow = ({user_test_data, first_questions}) => {
 
                     <div className="test-features">
                         <div className="head">
-                            <span id="subject">Пәндер</span>
-                            <span id="questions">Сұрақтар саны</span>
-                            <span id="max-balls">Макс. балл</span>
-                            <span id="balls">Балл</span>
+                            <span id="subject">{t("testflow.head.subject")}</span>
+                            <span id="questions">{t("testflow.head.questions")}</span>
+                            <span id="max-balls">{t("testflow.head.max-balls")}</span>
+                            <span id="balls">{t("testflow.head.balls")}</span>
                         </div>
                         
                         {user_test_data.subjects.map((subject, i) => {
@@ -122,6 +120,12 @@ export async function getServerSideProps(context) {
     const data = await res.json();
     const user_test_data = data.user_test_data || null;
     const first_questions = data.first_questions || [];
+
+    if (!user_test_data.status) {
+        return {
+            notFound: true,
+        }
+    }
 
     return {
         props: {

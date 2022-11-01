@@ -8,8 +8,6 @@ const Sidebar = ({ user_test_data, first_questions, finishHandler }) => {
     const router = useRouter();
     const { t } = useTranslation("common");
 
-    console.log(finishHandler);
-
     return (
         <div className="sidebar">
             {user_test_data && !user_test_data.status ?

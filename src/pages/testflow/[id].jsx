@@ -10,7 +10,7 @@ import useTranslation from "next-translate/useTranslation";
 
 
 
-const TestFlow = ({user_test_data, first_questions, access}) => {
+const TestFlow = ({user_test_data, first_questions}) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const { t } = useTranslation("common");
@@ -125,7 +125,6 @@ export async function getServerSideProps(context) {
         props: {
             user_test_data,
             first_questions,
-            access: context.req.cookies.access || null
         }
     }
 }
