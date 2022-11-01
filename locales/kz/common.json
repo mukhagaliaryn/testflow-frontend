@@ -162,8 +162,21 @@
 
     "testflow": {
         "header": {
-            "title": "",
-            "heading": ""
-        }
+            "title": "Тестілеу ағымы - TestFlow"
+        },
+        "test-time": {
+            "start-time": "Басталған уақыты:",
+            "end-time": "Аяқалған уақыты:",
+            "ln": "Тілі",
+            "process": "Процесс үстінде",
+            "finish": "Аяқталды"
+        },
+        "head": {
+            "subject": "Пәндер",
+            "questions": "Сұрақтар",
+            "max-balls": "Макс. балл",
+            "balls": "Балл"
+        },
+        "started": "Тестілеуді бастау"
     }
 }

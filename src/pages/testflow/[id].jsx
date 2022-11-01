@@ -6,11 +6,14 @@ import { BACKEND_URL } from "../../actions/types";
 import TestLayout from "../../layouts/test";
 import Moment from 'react-moment';
 import { AiOutlineCheckCircle, AiOutlineFieldTime } from "react-icons/ai";
+import useTranslation from "next-translate/useTranslation";
+
 
 
 const TestFlow = ({user_test_data, first_questions, access}) => {
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+    const { t } = useTranslation("common");
 
     const get_sum = (arr) => {
         let sum = 0;
@@ -18,27 +21,6 @@ const TestFlow = ({user_test_data, first_questions, access}) => {
             sum += arr[i].max_mark;
         }
         return sum
-    }
-
-    const finishHandler = async () => {
-        try {
-            const response = await fetch(`${BACKEND_URL}/testflow/user-answer/${user_test_data.id}/finish/`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `JWT ${access}`
-                },
-            })
-
-            if (response.status == 200) {
-                router.push(`/testflow/results/${user_test_data.id}`)
-            } else {
-                alert('Error!')
-            }
-
-        } catch (e) {
-            console.log(e);
-        }
     }
 
     if(typeof window !== 'undefined' && !isAuthenticated) {
@@ -49,38 +31,38 @@ const TestFlow = ({user_test_data, first_questions, access}) => {
         router.push(`/testflow/results/${user_test_data.id}`)
     }
 
+
     return (
         <TestLayout
-            title={"Тестілеу ағымы (ҰБТ) - TestFlow"}
+            title={t("testflow.header.title")}
             user_test_data={user_test_data}
             first_questions={first_questions}
-            finishHandler={finishHandler}
         >
             {isAuthenticated &&
                 <div className="testflow-container">
                     <div className="test-time">
-                        <div className="start">
-                            <span>Басталған уақыты: </span>
-                            <span><Moment format="DD.MM.YYYY - HH:MM:SS" date={user_test_data.start_time} /></span>
+                        <div className="group">
+                            <span className="label">{t("testflow.test-time.start-time")}</span>
+                            <span className="value"><Moment format="DD.MM.YYYY - HH:MM:SS" date={user_test_data.start_time} /></span>
                         </div>
-                        <div className="end">
-                            <span>Аяқалған уақыты: </span>
-                            <span>-</span>
+                        <div className="group">
+                            <span className="label">{t("testflow.test-time.end-time")}</span>
+                            <span className="value">-</span>
                         </div>
-                        <div className="language">
-                            <span>Язык: </span>
-                            <span>{user_test_data.ln === "RU" ? "Русский" : "Қазақша"}</span>
+                        <div className="group">
+                            <span className="label">{t("testflow.test-time.ln")}</span>
+                            <span className="value">{user_test_data.ln === "RU" ? "Русский" : "Қазақша"}</span>
                         </div>
-                        <div className="status">
-                            <span>Статус: </span>
+                        <div className="group">
+                            <span className="label">Статус: </span>
                             {user_test_data.status ?
-                                <span className="finish">
-                                    Аяқталды
+                                <span className="value finish">
+                                    <span>{t("testflow.test-time.finish")}</span> 
                                     <AiOutlineCheckCircle />
                                 </span>
                             :
-                                <span className="proccess">
-                                    Процесс үстінде
+                                <span className="value proccess">
+                                    <span>{t("testflow.test-time.process")}</span>
                                     <AiOutlineFieldTime />
                                 </span>
                             }
@@ -89,10 +71,10 @@ const TestFlow = ({user_test_data, first_questions, access}) => {
 
                     <div className="test-features">
                         <div className="head">
-                            <span id="subject">Пәндер</span>
-                            <span id="questions">Сұрақтар саны</span>
-                            <span id="max-balls">Макс. балл</span>
-                            <span id="balls">Балл</span>
+                            <span id="subject">{t("testflow.head.subject")}</span>
+                            <span id="questions">{t("testflow.head.questions")}</span>
+                            <span id="max-balls">{t("testflow.head.max-balls")}</span>
+                            <span id="balls">{t("testflow.head.balls")}</span>
                         </div>
                         
                         {user_test_data.subjects.map((subject, i) => {
@@ -111,7 +93,7 @@ const TestFlow = ({user_test_data, first_questions, access}) => {
                     
                     <div className="bottom">
                         <Link href={`/testflow/${user_test_data.id}/${first_questions[0].subject.slug}/question/${first_questions[0].id}`}>
-                            <a className="start-test">Тестілеуді бастау</a>
+                            <a className="start-test">{t("testflow.started")}</a>
                         </Link>
                     </div>
                 </div>
@@ -132,6 +114,12 @@ export async function getServerSideProps(context) {
     const data = await res.json();
     const user_test_data = data.user_test_data || null;
     const first_questions = data.first_questions || [];
+
+    if (user_test_data && user_test_data.status) {
+        return {
+            notFound: true,
+        }
+    }
 
     return {
         props: {

@@ -16,28 +16,37 @@
 
             // testflow page
             .testflow-container {
+                min-width: 1024px;
 
                 .test-time {
                     padding: 20px;
                     border-bottom: 1px solid var(--comp-border);
 
-                    .status {
-                        span {
-                            display: inline-flex;
+                    .group {
+                        display: flex;
+                        align-items: center;
+                        padding-bottom: 5px;
+                        
+                        .label {
+                            margin-right: 5px;
+                        }
+
+                        .value {
+                            margin-left: 5px;
+                            display: flex;
                             align-items: center;
 
                             svg {
+                                font-size: 1rem;
                                 margin-left: 5px;
                             }
                         }
 
                         .finish {
-                            margin-left: 5px;
-                            color: green;
+                            color: #0ac539;
                         }
                         .proccess {
-                            margin-left: 5px;
-                            color: blue;
+                            color: var(--blue);
                         }
                     }
                 }

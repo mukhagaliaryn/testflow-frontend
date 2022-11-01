@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Script from "next/script";
 import React, { useEffect } from "react";
@@ -51,6 +52,16 @@ const TestLayout = (props) => {
                         </div>
                     </div>
                 </div>
+
+                <nav className="i18next">
+                    {router.locales.map(locale => (
+                        <Link href={router.asPath} locale={locale} key={locale}>
+                            <a>
+                                {locale === "kz" ? "Қазашқа" : locale === "ru" ? "Русский" : null}
+                            </a>
+                        </Link>
+                    ))}
+                </nav>
             </div>
         </React.Fragment>
     )

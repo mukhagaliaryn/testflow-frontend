@@ -6,7 +6,6 @@ import MainLayout from "../../layouts/main";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { TiFlowParallel } from 'react-icons/ti';
-import NotFound from '../404';
 import useTranslation from "next-translate/useTranslation";
 import { setAlert } from "../../actions/alert";
 
@@ -64,10 +63,6 @@ const TestDetail = ({ access, user_account }) => {
     
     if(typeof window !== 'undefined' && !isAuthenticated) {
         router.push('/accounts/login')
-    }
-
-    if(typeof window !== 'undefined' && (user_account && user_account.role === "ADMIN")) {
-        return <NotFound />;
     }
 
     return (
@@ -152,6 +147,12 @@ export async function getServerSideProps(context) {
     const data = await res.json();
 
     const user_account = data.user_account || null;
+
+    if (user_account && user_account.role === "ADMIN") {
+        return {
+            notFound: true
+        }
+    }
 
     return {
         props: {

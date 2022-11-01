@@ -163,6 +163,23 @@
     },
 
     "testflow": {
+        "header": {
+            "title": "Тестовый поток - TestFlow"
+        },
+        "test-time": {
+            "start-time": "Время начала:",
+            "end-time": "Время окончания:",
+            "ln": "Язык:",
+            "process": "В процессе",
+            "finish": "Завершено"
+        },
 
+        "head": {
+            "subject": "Предметы",
+            "questions": "Вопросы",
+            "max-balls": "Макс. балл",
+            "balls": "Балл"
+        },
+        "started": "Начать тестирования"
     }
 }

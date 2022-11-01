@@ -48,9 +48,18 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
         }
     }
 
+    if(typeof window !== 'undefined' && !isAuthenticated) {
+        router.push('/accounts/login')
+    }
+
+    if(typeof window !== 'undefined' && (user_test_data && user_test_data.status)) {
+        router.push(`/testflow/results/${user_test_data.id}`)
+    }
+
+
     return (
         <TestLayout
-            title={subject.title}
+            title={subject && subject.title}
             user_test_data={user_test_data}
             user_answers={user_answers}
             user_answer={user_answer}
@@ -58,7 +67,7 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
             first_questions={first_questions}
             finishHandler={finishHandler}
         >
-            {isAuthenticated &&
+            {(isAuthenticated && user_answer) &&
                 <div className="question-testflow">
                     <div className="question-box">
                         <div className="question-title">
@@ -68,8 +77,8 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
                                 </div>
                             }
                             <div className="q-head">
-                                <span id="number">1.</span>
-                                <span>{parse(user_answer.question.title)}</span>
+                                <span id="number"></span>
+                                <span>{parse(user_answer.question.title || "")}</span>
                             </div>
                             <div className="content">
                                 <span>{parse(user_answer.question.content || "")}</span>
@@ -117,6 +126,12 @@ export async function getServerSideProps(context) {
     const subject = data.subject || null;
     const user_answer = data.user_answer || null;
     const user_answers = data.user_answers || [];
+
+    if (user_test_data && user_test_data.status) {
+        return {
+            notFound: true,
+        }
+    }
 
     return {
         props: {
