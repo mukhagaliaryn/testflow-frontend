@@ -121,7 +121,7 @@ export async function getServerSideProps(context) {
     const user_test_data = data.user_test_data || null;
     const first_questions = data.first_questions || [];
 
-    if (!user_test_data.status) {
+    if (user_test_data && !user_test_data.status) {
         return {
             notFound: true,
         }

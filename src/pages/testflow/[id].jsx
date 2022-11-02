@@ -38,7 +38,7 @@ const TestFlow = ({user_test_data, first_questions}) => {
             user_test_data={user_test_data}
             first_questions={first_questions}
         >
-            {isAuthenticated &&
+            {(isAuthenticated && user_test_data) &&
                 <div className="testflow-container">
                     <div className="test-time">
                         <div className="group">

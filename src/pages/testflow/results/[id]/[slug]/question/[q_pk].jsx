@@ -12,14 +12,14 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
 
     return (
         <TestLayout
-            title={subject.title}
+            title={subject && router.locale === "ru" ? subject.title : subject.title_kk}
             user_test_data={user_test_data}
             user_answers={user_answers}
             user_answer={user_answer}
             subject={subject}
             first_questions={first_questions}
         >
-            {isAuthenticated &&
+            {(isAuthenticated && user_answer) &&
                 <div className="question-testflow">
                     <div className="question-box">
                         <div className="question-title">
@@ -84,6 +84,12 @@ export async function getServerSideProps(context) {
     const subject = data.subject || null;
     const user_answer = data.user_answer || null;
     const user_answers = data.user_answers || [];
+
+    if (user_test_data && !user_test_data.status) {
+        return {
+            notFound: true,
+        }
+    }
 
     return {
         props: {
