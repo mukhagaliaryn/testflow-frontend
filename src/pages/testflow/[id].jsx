@@ -91,11 +91,13 @@ const TestFlow = ({user_test_data, first_questions}) => {
                         })}
                     </div>
                     
-                    <div className="bottom">
-                        <Link href={`/testflow/${user_test_data.id}/${first_questions[0].subject.slug}/question/${first_questions[0].id}`}>
-                            <a className="start-test">{t("testflow.started")}</a>
-                        </Link>
-                    </div>
+                    {first_questions.length > 0 &&
+                        <div className="bottom">
+                            <Link href={`/testflow/${user_test_data.id}/${first_questions[0].subject.slug}/question/${first_questions[0].id}`}>
+                                <a className="start-test">{t("testflow.started")}</a>
+                            </Link>
+                        </div>
+                    }
                 </div>
             }
         </TestLayout>
