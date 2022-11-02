@@ -51,7 +51,7 @@ const TestFlow = ({user_test_data, first_questions}) => {
                         </div>
                         <div className="group">
                             <span className="label">{t("testflow.test-time.end-time")}</span>
-                            <span className="value">-</span>
+                            <span className="value"><Moment format="DD.MM.YYYY - HH:MM:SS" date={user_test_data.finish_time} /></span>
                         </div>
                         <div className="group">
                             <span className="label">{t("testflow.test-time.ln")}</span>

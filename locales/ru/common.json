@@ -131,6 +131,8 @@
         },
 
         "results": {
+            "test_ent": "ЕНТ",
+            "test_nkt": "НКТ",
             "process": "В процессе",
             "finish": "Завершено"
         },
