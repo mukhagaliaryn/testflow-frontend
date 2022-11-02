@@ -11,19 +11,17 @@ import { setAlert } from "../../../actions/alert";
 
 
 const Profile = ({ user_account, access }) => {
+    const user_image = useSelector(state => state.auth.user)
     const router = useRouter();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const { t } = useTranslation("common");
-
+    const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const { register: register2, handleSubmit: handleSubmit2, } = useForm();
-
-    const dispatch = useDispatch();
 
 
     const user = user_account.user;
     const tenant = user_account.tenant;
-
 
     const onSubmit = async (data) => {
         try {
@@ -86,7 +84,7 @@ const Profile = ({ user_account, access }) => {
                         <React.Fragment>
                             <div className="user-personal-name">
                                 <div className="image">
-                                    <Image src={user.image ? user.image : '/images/ava.png'} width={100} height={100} />
+                                    <Image src={user_image && user_image.image ? user_image.image : '/images/ava.png'} width={100} height={100} />
                                 </div>
                                 <div className="user-name">
                                     <h2>{user.full_name}</h2>
