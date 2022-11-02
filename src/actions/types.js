@@ -25,9 +25,9 @@ export const PASSWORD_RESET_CONFIRM_FAIL = 'PASSWORD_RESET_CONFIRM_FAIL';
 export const PASSWORD_RESET_CONFIRM_SUCCESS = 'PASSWORD_RESET_CONFIRM_SUCCESS';
 
 
-export const DEVELOPMENT = "DEVELOPMENT";
-// export const DEVELOPMENT = "PRODUCTION";
+// export const DEVELOPMENT = "DEVELOPMENT";
+export const DEVELOPMENT = "PRODUCTION";
 
 // Backend URLs
-export const BACKEND_URL = 'http://127.0.0.1:8000';
-// export const BACKEND_URL = 'https://testflow.pythonanywhere.com/';
+// export const BACKEND_URL = 'http://127.0.0.1:8000';
+export const BACKEND_URL = 'https://testflow.pythonanywhere.com/';
