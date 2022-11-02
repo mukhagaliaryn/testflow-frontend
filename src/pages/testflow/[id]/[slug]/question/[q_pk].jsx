@@ -59,7 +59,7 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
 
     return (
         <TestLayout
-            title={subject && subject.title}
+            title={subject && router.locale === "ru" ? subject.title : subject.title_kk}
             user_test_data={user_test_data}
             user_answers={user_answers}
             user_answer={user_answer}

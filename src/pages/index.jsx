@@ -27,8 +27,6 @@ const Home = ({ user_test_data, user_account }) => {
             {isAuthenticated && user_account &&
                 user_account.role === "STUDENT" ?
                     <StudentUserTestData user_test_data={user_test_data} />
-                : user_account && user_account.role === "TEACHER" ?
-                    <StudentUserTestData user_test_data={user_test_data} />
                 : user_account && user_account.role === "ADMIN" ?
                     <AdminUserTestData user_test_data={user_test_data} />
                 :

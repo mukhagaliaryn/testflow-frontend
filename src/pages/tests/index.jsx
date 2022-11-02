@@ -17,11 +17,10 @@ const TestDetail = ({ access, user_account }) => {
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [selected, setSelect] = useState(null);
-    
+
     const selectChange = e => {
         setSelect(e.target.value);
     }
-    
 
     const onSubmit = async (data) => {
         const body = {
