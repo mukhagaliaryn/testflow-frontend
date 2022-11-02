@@ -46,7 +46,11 @@ const StudentUserTestData = ({ user_test_data }) => {
                             <span id="ln">{data.ln === 'KZ' ? "Қазақша" : "Русский"}</span>
                             <span id="time">
                                 <Moment format="HH:MM:SS" date={data.start_time} /> - 
-                                <Moment format="HH:MM:SS" date={Date.now()} />                            
+                                {data.finish_time ?
+                                    <Moment format="HH:MM:SS" date={data.finish_time} />                            
+                                :
+                                    "..."
+                                }
                             </span>
                             <span id="status">
                                 {data.status === true ?

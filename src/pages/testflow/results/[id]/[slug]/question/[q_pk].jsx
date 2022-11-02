@@ -41,18 +41,20 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
                                 return (
                                     <React.Fragment key={i}>
                                         {user_answer.question.format === "ONE" ?
-                                            <li className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
-                                                <div className={user_answer.answers.find(id => id === answer.id) ? "radio selected" : "radio"}>
+                                            <li className={answer.correct ? "answer correct" : "answer"}>
+                                                <div className={answer.correct ? "radio selected" : "radio"}>
                                                     <span></span>
                                                 </div>
                                                 <span>{parse(answer.text)}</span>
+                                                {user_answer.answers.find(id => id === answer.id) && "Менің жауабым"}
                                             </li>
                                         :
-                                            <li className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
-                                                <div className={user_answer.answers.find(id => id === answer.id) ? "checkbox selected" : "checkbox"}>
+                                            <li className={answer.correct ? "answer correct" : "answer"}>
+                                                <div className={answer.correct ? "checkbox selected" : "checkbox"}>
                                                     <span></span>
                                                 </div>
                                                 <span>{parse(answer.text)}</span>
+                                                {user_answer.answers.find(id => id === answer.id) && "Менің жауабым"}
                                             </li>
                                         }
                                     </React.Fragment>

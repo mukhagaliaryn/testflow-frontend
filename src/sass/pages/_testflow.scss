@@ -201,6 +201,22 @@
                         .selected {
                             background-color: var(--hover);
                         }
+
+                        .correct {
+                            background-color: #06d6a0;
+
+                            &:hover {
+                                background-color: #06d6a0;
+                            }
+                        }
+
+                        #user-answer {
+                            background-color: red;
+
+                            &:hover {
+                                background-color: red;
+                            }
+                        }
                     }
 
                     .btns {

@@ -90,12 +90,16 @@ const TestFlowQuestionDetail = ({ first_questions, user_test_data, subject, user
                                     <React.Fragment key={i}>
                                         {user_answer.question.format === "ONE" ?
                                             <li onClick={() => oneChoiceAnswer(user_test_data.id, user_answer.question.id, answer.id)} className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
-                                                <div className={user_answer.answers.find(id => id === answer.id) ? "radio selected" : "radio"}><span></span></div>
+                                                <div className={user_answer.answers.find(id => id === answer.id) ? "radio selected" : "radio"}>
+                                                    <span></span>
+                                                </div>
                                                 <span>{parse(answer.text)}</span>
                                             </li>
                                         :
                                             <li onClick={() => oneChoiceAnswer(user_test_data.id, user_answer.question.id, answer.id)} className={user_answer.answers.find(id => id === answer.id) ? "answer selected" : "answer"}>
-                                                <div className={user_answer.answers.find(id => id === answer.id) ? "checkbox selected" : "checkbox"}><span></span></div>
+                                                <div className={user_answer.answers.find(id => id === answer.id) ? "checkbox selected" : "checkbox"}>
+                                                    <span></span>
+                                                </div>
                                                 <span>{parse(answer.text)}</span>
                                             </li>
                                         }
