@@ -14,25 +14,18 @@
         cursor: pointer;
         padding: 0 20px;
 
+
         .logo {
             width: 32px;
             margin-right: 10px;
+            display: flex;
+            align-items: center;
         }
 
-
-        .user {
-            h4 {
-                font-size: 1rem;
-                -webkit-line-clamp: 1; 
-                -webkit-box-orient: vertical;
-                display: -webkit-box;
-                overflow: hidden;
-            }
-            small {
-                color: var(--small-text-color);
-            }
+        .brandname {
+            font-weight: bold;
         }
-
+        
         &::after {
             content: '';
             z-index: 1;

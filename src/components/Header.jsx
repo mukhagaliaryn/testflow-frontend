@@ -44,7 +44,7 @@ const Header = ({user_account}) => {
                         </Link>
                     :
                         user_account.role === "TEACHER" ? 
-                            <Link href="/tests">
+                            <Link href="/question">
                                 <a className="goto">{t("header.account.add-test")}</a>
                             </Link>
                     :    

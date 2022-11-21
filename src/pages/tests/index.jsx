@@ -70,7 +70,7 @@ const TestDetail = ({ access, user_account }) => {
             heading={t("tests.header.heading")}
             user_account={user_account}
         >
-            {(isAuthenticated && (user_account && user_account.role !== "ADMIN")) &&
+            {(isAuthenticated && (user_account && user_account.role === "STUDENT")) &&
                 <div className="main-container">
                     <div className="test-category-detail">
                         <div className="head">
@@ -147,7 +147,7 @@ export async function getServerSideProps(context) {
 
     const user_account = data.user_account || null;
 
-    if (user_account && user_account.role === "ADMIN") {
+    if (user_account.role === "ADMIN" || user_account.role === "TEACHER") {
         return {
             notFound: true
         }

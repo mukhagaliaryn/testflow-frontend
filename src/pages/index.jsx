@@ -6,6 +6,7 @@ import MainLayout from "../layouts/main";
 import StudentUserTestData from "../components/roles/student/UserTestData";
 import AdminUserTestData from "../components/roles/admin/UserTestData";
 import useTranslation from "next-translate/useTranslation";
+import QuestionsList from "../components/roles/teacher/QuestionsList";
 
 
 const Home = ({ user_test_data, user_account }) => {
@@ -21,16 +22,23 @@ const Home = ({ user_test_data, user_account }) => {
     return (
         <MainLayout
             title={t("main.header.title")}
-            heading={user_account && user_account.role !== "ADMIN" ? t("main.header.heading") : t("main.header.heading_admin")}
+            heading={
+                user_account && 
+                user_account.role === "STUDENT" ? t("main.header.heading") 
+                : user_account.role === "TEACHER" ? "Все вопросы"
+                : user_account.role === "ADMIN" ? t("main.header.heading_admin")
+                : null
+            }
             user_account={user_account && user_account}
         >
             {isAuthenticated && user_account &&
                 user_account.role === "STUDENT" ?
                     <StudentUserTestData user_test_data={user_test_data} />
+                : user_account.role === "TEACHER" ?
+                    <QuestionsList />
                 : user_account && user_account.role === "ADMIN" ?
                     <AdminUserTestData user_test_data={user_test_data} />
-                :
-                    null
+                : null
             }
         </MainLayout>
     )

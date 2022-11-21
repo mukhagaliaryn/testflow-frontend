@@ -43,7 +43,7 @@ const AccountsLayout = (props) => {
                                         <div className="image">
                                             <Image src={'/images/flow.png'} width={100} height={100}/>
                                         </div>
-                                        <span>testflow</span>
+                                        <span>TestFlow</span>
                                     </a>
                                 </Link>
                             </motion.div>
