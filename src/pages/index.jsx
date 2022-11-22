@@ -24,21 +24,25 @@ const Home = ({ user_test_data, user_account }) => {
             title={t("main.header.title")}
             heading={
                 user_account && 
-                user_account.role === "STUDENT" ? t("main.header.heading") 
-                : user_account.role === "TEACHER" ? "Все вопросы"
-                : user_account.role === "ADMIN" ? t("main.header.heading_admin")
-                : null
+                (
+                    user_account.role === "STUDENT" ? t("main.header.heading") 
+                    : user_account.role === "TEACHER" ? "Все вопросы"
+                    : user_account.role === "ADMIN" ? t("main.header.heading_admin")
+                    : null
+                )
             }
             user_account={user_account && user_account}
         >
-            {isAuthenticated && user_account &&
-                user_account.role === "STUDENT" ?
-                    <StudentUserTestData user_test_data={user_test_data} />
-                : user_account.role === "TEACHER" ?
-                    <QuestionsList />
-                : user_account && user_account.role === "ADMIN" ?
-                    <AdminUserTestData user_test_data={user_test_data} />
-                : null
+            {isAuthenticated && user_account && 
+                (
+                    user_account.role === "STUDENT" ?
+                        <StudentUserTestData user_test_data={user_test_data} />
+                    : user_account.role === "TEACHER" ?
+                        <QuestionsList />
+                    : user_account && user_account.role === "ADMIN" ?
+                        <AdminUserTestData user_test_data={user_test_data} />
+                    : null
+                )
             }
         </MainLayout>
     )
