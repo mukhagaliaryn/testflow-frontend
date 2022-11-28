@@ -14,7 +14,6 @@ const Home = ({ user_test_data, user_account }) => {
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
     const { t } = useTranslation("common");
 
-
     if (typeof window !== 'undefined' && !isAuthenticated) {
         router.push('/accounts/login')
     }
