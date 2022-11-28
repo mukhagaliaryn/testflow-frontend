@@ -51,9 +51,7 @@ const Header = ({user_account}) => {
                         null
                     )}
                     
-                    <span>hello</span>
                     <span className="push" onClick={togglePushDropdown}><BsBell /></span>
-
                     <span className="user" onClick={toggleDropdown}>
                         <div className="ava">
                             <Image src={user && user.image ? user.image : '/images/ava.png'} width={100} height={100} />
