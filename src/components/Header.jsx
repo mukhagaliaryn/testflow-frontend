@@ -50,7 +50,8 @@ const Header = ({user_account}) => {
                     :    
                         null
                     )}
-
+                    
+                    <span>hello</span>
                     <span className="push" onClick={togglePushDropdown}><BsBell /></span>
 
                     <span className="user" onClick={toggleDropdown}>
