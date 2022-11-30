@@ -22,8 +22,17 @@
             align-items: center;
         }
 
-        .brandname {
-            font-weight: bold;
+        .username {
+            h4 {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden; 
+            }
+
+            small {
+                color: var(--small-text-color);
+            }
         }
         
         &::after {

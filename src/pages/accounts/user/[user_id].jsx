@@ -19,7 +19,6 @@ const Profile = ({ user_account, access }) => {
     const { register, handleSubmit } = useForm();
     const { register: register2, handleSubmit: handleSubmit2, } = useForm();
 
-
     const user = user_account.user;
     const tenant = user_account.tenant;
 
@@ -90,7 +89,7 @@ const Profile = ({ user_account, access }) => {
                                     <h2>{user.full_name}</h2>
                                     <span id="iin">{user.iin}</span>
                                     <span id="role">{user_account.role}</span>
-                                    <small><AiFillLock /> {tenant.tenant_name}</small>
+                                    <span id="tenant"><AiFillLock /> {tenant.tenant_name}</span>
                                 </div>
                             </div>
                             

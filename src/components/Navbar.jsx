@@ -6,12 +6,13 @@ import { GrUpgrade } from 'react-icons/gr';
 import { TbLayoutList } from 'react-icons/tb';
 import { RiHome5Line } from 'react-icons/ri';
 import useTranslation from "next-translate/useTranslation";
+import { useSelector } from "react-redux";
 
 
 const Navbar = ({ user_account }) => {
     const router = useRouter();
     const { t } = useTranslation("common");
-
+    const user = useSelector(state => state.auth.user)
 
     return (
         <div className="navbar">
@@ -19,9 +20,13 @@ const Navbar = ({ user_account }) => {
                 <div className="logo">
                     <Image src={"/images/flow.png"} width={100} height={100} />
                 </div>
-                <h2 className="brandname">TestFlow</h2>
+                {user &&
+                    <div className="username">
+                        <h4>{user.full_name}</h4>
+                        <small>{user.iin}</small>
+                    </div>
+                }
             </div>
-
             <ul className="route-list">
                 <li className={router.pathname === "/" ? "active": ""}>
                     <Link href={"/"}>
