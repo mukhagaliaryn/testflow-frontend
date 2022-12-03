@@ -29,7 +29,7 @@ const StudentUserTestData = ({ user_test_data }) => {
                     return (
                         <div className="results student" key={i} onClick={() => router.push(data.status ? `/testflow/results/${data.id}` : `testflow/${data.id}`)}>
                             <span id="id">{data.id}</span>
-                            <span id="test">{data.test_type === "ENT" ? t("main.results.test_ent") : t("main.results.test_ntk")}</span>
+                            <span id="test">{router.locale === "ru" ? data.test_type.category_name : data.test_type.category_name_kk}</span>
                             <span id="ls">
                                 {data.subjects.map((subject, i) => {
                                     return (

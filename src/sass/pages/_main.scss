@@ -164,58 +164,25 @@
             }
 
             // Test categories page
-            // .test-categories {
-            //     display: grid;
-            //     grid-template-columns: repeat(2, 1fr);
-            //     padding: 20px;
+            .test-categories {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                padding: 20px;
+                max-width: 1024px;
 
-            //     .test-category {
-            //         border: 1px solid var(--comp-border);
-            //         margin-right: 10px;
-            //         margin-bottom: 10px;
-            //         border-radius: 5px;
+                .test-category {
+                    border: 1px solid var(--comp-border);
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+                    border-radius: 5px;
+                    padding: 10px;
+                    cursor: pointer;
 
-            //         .head {
-            //             border-bottom: 1px solid var(--comp-border);
-            //             display: flex;
-            //             justify-content: space-between;
-            //             padding: 10px 20px;
-
-            //             a {
-            //                 padding: 5px 20px;
-            //                 border-radius: 5px;
-            //                 background-color: var(--button-bg);
-            //                 color: var(--comp-color);
-            //                 border: 1px solid var(--blue);
-
-
-            //                 &:hover {
-            //                     border: 1px solid var(--blue);
-            //                     background-color: transparent;
-            //                     color: var(--blue);
-            //                 }
-            //             }
-            //         }
-
-            //         .description {
-            //             padding: 10px 20px;
-            //             font-size: 14px;
-
-            //             ul {
-            //                 margin-left: 20px;
-
-            //                 li {
-            //                     list-style: disc;
-            //                 }
-            //             }
-
-            //         }
-
-            //         &:hover {
-            //             background-color: var(--hover);
-            //         }
-            //     }
-            // }
+                    &:hover {
+                        background-color: var(--hover);
+                    }
+                }
+            }
 
 
             // Test category detail page

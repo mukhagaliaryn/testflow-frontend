@@ -26,7 +26,7 @@ const AdminUserTestData = ({ user_test_data }) => {
                         <div className="results admin" key={i} onClick={() => router.push(`testflow/${data.id}`)}>
                             <span id="id">{"Арын Мұқағали"}</span>
                             <span id="test">{"1503-12"}</span>
-                            <span id="test">{data.test_type}</span>
+                            <span id="test">{data.test_type.category_name}</span>
                             <span id="ls">
                                 {data.subjects.map((subject, i) => {
                                     return (
