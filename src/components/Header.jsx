@@ -37,15 +37,16 @@ const Header = ({user_account}) => {
                         <input type="text" name="" placeholder={t("header.search")} />
                     </div>
                 </form>
+                
                 <div className="accounts">
                     {user_account && (user_account.role === "STUDENT" ? 
                         <Link href="/tests">
-                            <a className="goto">{t("header.account.go-to")}</a>
+                            <span className="goto">{t("header.account.go-to")}</span>
                         </Link>
                     :
                         user_account.role === "TEACHER" ? 
                             <Link href="/question">
-                                <a className="goto">{t("header.account.add-test")}</a>
+                                <span className="goto">{t("header.account.add-test")}</span>
                             </Link>
                     :    
                         null
@@ -54,7 +55,7 @@ const Header = ({user_account}) => {
                     <span className="push" onClick={togglePushDropdown}><BsBell /></span>
                     <span className="user" onClick={toggleDropdown}>
                         <div className="ava">
-                            <Image src={user && user.image ? user.image : '/images/ava.png'} width={100} height={100} />
+                            <Image src={(user && user.image) ? user.image : '/images/ava.png'} width={100} height={100}  alt="image"/>
                         </div>
                         <div className="down"><BsChevronDown /></div>
                     </span>

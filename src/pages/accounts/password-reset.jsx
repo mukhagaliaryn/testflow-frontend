@@ -62,7 +62,7 @@ const PasswordReset = () => {
                 </div>
                 <div className="input-group submit">
                     <Link href="/accounts/login">
-                        <a>{t("accounts.back")}</a>
+                        <span>{t("accounts.back")}</span>
                     </Link>
                     <div className="input">
                         <button>

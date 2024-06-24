@@ -52,7 +52,7 @@ const AdminUserTestData = ({ user_test_data }) => {
                                         <AiOutlineFieldTime />
                                         
                                         <Link href={`testflow/${data.id}`}>
-                                            <a className="goto-testflow"><AiFillCaretRight /></a>
+                                            <span className="goto-testflow"><AiFillCaretRight /></span>
                                         </Link>
                                     </div>
                                 }

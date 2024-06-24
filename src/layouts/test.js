@@ -56,9 +56,9 @@ const TestLayout = (props) => {
                 <nav className="i18next">
                     {router.locales.map(locale => (
                         <Link href={router.asPath} locale={locale} key={locale}>
-                            <a>
+                            <span>
                                 {locale === "kz" ? "Қазашқа" : locale === "ru" ? "Русский" : null}
-                            </a>
+                            </span>
                         </Link>
                     ))}
                 </nav>

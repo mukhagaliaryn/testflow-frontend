@@ -59,7 +59,7 @@ const Login = () => {
                 </div>
                 <div className="input-group submit">
                     <Link href={"/accounts/password-reset"}>
-                        <a>{t("accounts.forgot_password")}</a>
+                        <span>{t("accounts.forgot_password")}</span>
                     </Link>
                     <div className="input">
                         <button>
@@ -77,7 +77,7 @@ const Login = () => {
             <div className="more-link">
                 <span>{t("accounts.is_register")}</span>
                 <Link href={"/accounts/register"}>
-                    <a>{t("accounts.register_link")}</a>
+                    <span>{t("accounts.register_link")}</span>
                 </Link>
             </div>
         </AccountsLayout>

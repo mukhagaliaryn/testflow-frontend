@@ -64,7 +64,7 @@ const StudentUserTestData = ({ user_test_data }) => {
                                         <AiOutlineFieldTime />
                                         
                                         <Link href={`testflow/${data.id}`}>
-                                            <a className="goto-testflow"><AiFillCaretRight /></a>
+                                            <span className="goto-testflow"><AiFillCaretRight /></span>
                                         </Link>
                                     </div>
                                 }
@@ -77,7 +77,7 @@ const StudentUserTestData = ({ user_test_data }) => {
                     <RiErrorWarningLine />
                     <span>{t("main.no-content.label")}</span>
                     <Link href={"/tests"}>
-                        <a>{t("main.no-content.link")}</a>
+                        <span>{t("main.no-content.link")}</span>
                     </Link>                            
                 </div>
             }

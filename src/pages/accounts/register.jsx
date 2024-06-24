@@ -115,7 +115,7 @@ const Register = () => {
             <div className="more-link">
                 <span>{t("accounts.is_accounts")}</span>
                 <Link href={"/accounts/login"}>
-                    <a>{t("accounts.enter")}</a>
+                    <span>{t("accounts.enter")}</span>
                 </Link>
             </div>
         </AccountsLayout>

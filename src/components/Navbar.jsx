@@ -18,7 +18,7 @@ const Navbar = ({ user_account }) => {
         <div className="navbar">
             <div className="workspace" onClick={() => router.push('/')}>
                 <div className="logo">
-                    <Image src={"/images/flow.png"} width={100} height={100} />
+                    <Image src={"/images/flow.png"} width={100} height={100} alt="Image"/>
                 </div>
                 {user &&
                     <div className="username">
@@ -30,13 +30,13 @@ const Navbar = ({ user_account }) => {
             <ul className="route-list">
                 <li className={router.pathname === "/" ? "active": ""}>
                     <Link href={"/"}>
-                        <a><RiHome5Line />{t("navbar.main")}</a>
+                        <span><RiHome5Line />{t("navbar.main")}</span>
                     </Link>
                 </li>
                 {(user_account && user_account.role === "STUDENT") &&
                     <li className={router.pathname === "/tests" ? "active": ""}>
                         <Link href={"/tests"}>
-                            <a><TbLayoutList />{t("navbar.tests")}</a>
+                            <span><TbLayoutList />{t("navbar.tests")}</span>
                         </Link>
                     </li>
                 }

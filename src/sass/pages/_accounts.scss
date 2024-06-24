@@ -17,17 +17,19 @@
             .logo {
                 padding-bottom: 40px;
                 
-                a {
+                .logo-brand {
                     font-family: "Poppins", sans-serif;
                     color: var(--comp-color);
-                    display: inline-flex;
-                    
-                    .image {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+
+                    img {
                         width: 64px;
+                        height: auto;
                     }
                     
                     span {
-                        margin-left: 20px;
                         font-size: 2.5rem;
                         font-weight: 700;
                     }

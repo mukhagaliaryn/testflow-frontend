@@ -21,7 +21,7 @@ const Dropdown = ({user, toggleDropdown, logout }) => {
         >
             <div className="user-drop">
                 <div className="image">
-                    <Image src={user && user.image ? user.image : '/images/ava.png'} width={100} height={100} />
+                    <Image src={(user && user.image) ? user.image : '/images/ava.png'} width={100} height={100} alt="Image"/>
                 </div>
                 {user &&
                 <div className="username">
@@ -33,18 +33,18 @@ const Dropdown = ({user, toggleDropdown, logout }) => {
             <ul>
                 <li>
                     <Link href={`/accounts/user/${user.id}`}>
-                        <a>
+                        <span>
                             <BiUser />
                             <span>Профиль</span>
-                        </a>
+                        </span>
                     </Link>
                 </li>
                 <li>
                     <Link href={"/"}>
-                        <a>
+                        <span>
                             <GoSettings />
                             <span>{t("header.account.setting")}</span>
-                        </a>
+                        </span>
                     </Link>
                 </li>
                 <li>

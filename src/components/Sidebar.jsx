@@ -17,7 +17,7 @@ const Sidebar = ({ user_test_data, first_questions, finishHandler }) => {
                             return (
                                 <li key={i} className={router.query.slug === item.subject.slug ? "active": ""}>
                                     <Link href={`/testflow/${user_test_data.id}/${item.subject.slug}/question/${item.id}`}>
-                                        <a>{router.locale === "ru" ? item.subject.title : item.subject.title_kk}</a>
+                                        <span>{router.locale === "ru" ? item.subject.title : item.subject.title_kk}</span>
                                     </Link>
                                 </li>
                             )
@@ -37,7 +37,7 @@ const Sidebar = ({ user_test_data, first_questions, finishHandler }) => {
                             return (
                                 <li key={i} className={router.query.slug === item.subject.slug ? "active": ""}>
                                     <Link href={`/testflow/results/${user_test_data.id}/${item.subject.slug}/question/${item.id}`}>
-                                        <a>{router.locale === "ru" ? item.subject.title : item.subject.title_kk}</a>
+                                        <span>{router.locale === "ru" ? item.subject.title : item.subject.title_kk}</span>
                                     </Link>
                                 </li>
                             )
@@ -46,7 +46,7 @@ const Sidebar = ({ user_test_data, first_questions, finishHandler }) => {
                     
                     <div className="finish">
                         <Link href={"/"}>
-                            <a className="finish-btn" >Венуться в главный</a>
+                            <span className="finish-btn" >Венуться в главный</span>
                         </Link>
                     </div>
                 </>      

@@ -17,9 +17,9 @@ const TestHeader = ({ user_answers, subject, user_test_data }) => {
                         {user_answers.map((item, i) => {
                             return (
                                 <Link key={i} href={`/testflow/${user_test_data.id}/${subject.slug}/question/${item.question.id}`}>
-                                    <a className={router.asPath === `/testflow/${user_test_data.id}/${subject.slug}/question/${item.question.id}` ? "index show" : "index"}>
+                                    <span className={router.asPath === `/testflow/${user_test_data.id}/${subject.slug}/question/${item.question.id}` ? "index show" : "index"}>
                                         <span className={item.answers.length > 0 ? "number answered" : "number"}>{i+1}</span>
-                                    </a>
+                                    </span>
                                 </Link>
                             )
                         })}
@@ -31,9 +31,9 @@ const TestHeader = ({ user_answers, subject, user_test_data }) => {
                         {user_answers.map((item, i) => {
                             return (
                                 <Link key={i} href={`/testflow/results/${user_test_data.id}/${subject.slug}/question/${item.question.id}`}>
-                                    <a className={router.asPath === `/testflow/results/${user_test_data.id}/${subject.slug}/question/${item.question.id}` ? "index show" : "index"}>
+                                    <span className={router.asPath === `/testflow/results/${user_test_data.id}/${subject.slug}/question/${item.question.id}` ? "index show" : "index"}>
                                         <span className={item.answers.length > 0 ? "number answered" : "number"}>{i+1}</span>
-                                    </a>
+                                    </span>
                                 </Link>
                             )
                         })}
